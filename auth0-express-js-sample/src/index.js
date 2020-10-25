@@ -40,6 +40,6 @@ app.get("/test", (req, res) => {
  * Server Activation
  */
 
-app.listen(serverPort, () =>
+app.listen(process.env.PORT || serverPort, () =>
   console.log(`API Server listening on port ${serverPort}`)
 );
