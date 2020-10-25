@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client-install": "npm install --prefix ./auth0-react-sample client",
+    "client-install": "npm install --prefix ./auth0-react-sample ",
     "server": "nodemon auth0-express-js-sample/src/index.js",
-    "client": "npm start --prefix ./auth0-react-sample client",
+    "client": "npm start --prefix ./auth0-react-sample ",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node auth0-express-js-sample/src/index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ./auth0-react-sample client  && npm run build --prefix ./auth0-react-sample client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ./auth0-react-sample   && npm run build --prefix ./auth0-react-sample "
   },
   "keywords": [],
   "author": "",
