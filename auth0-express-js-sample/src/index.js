@@ -32,6 +32,9 @@ app.use(function (err, req, res, next) {
   console.log(err);
   res.status(500).send(err.message);
 });
+app.get("/test", (req, res) => {
+  res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+});
 
 /**
  * Server Activation

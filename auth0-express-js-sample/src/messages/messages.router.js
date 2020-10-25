@@ -22,6 +22,9 @@ messagesRouter.get("/public-message", (req, res) => {
   const message = getPublicMessage();
   res.status(200).send(message);
 });
+messagesRouter.get("/test", (req, res) => {
+  res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+});
 
 messagesRouter.get("/protected-message", checkJwt, (req, res) => {
   const message = getProtectedMessage();
