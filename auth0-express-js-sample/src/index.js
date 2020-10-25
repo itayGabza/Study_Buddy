@@ -19,16 +19,7 @@ const apiRouter = express.Router();
 /**
  *  App Configuration
  */
-if (process.env.NODE_ENV === 'production') {
-  // Exprees will serve up production assets
-  app.use(express.static('client/build'));
 
-  // Express serve up index.html file if it doesn't recognize route
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../auth0-react-sample', 'src', 'index.js'));
-  });
-}
 app.use(helmet());
 app.use(cors({ origin: clientOrigins }));
 app.use(express.json());
