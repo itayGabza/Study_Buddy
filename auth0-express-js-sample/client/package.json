@@ -2,7 +2,7 @@
   "name": "auth0-react-sample",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://blooming-fjord-38369.herokuapp.com/",
   "proxy": "http://localhost:6060",
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
