@@ -37,15 +37,11 @@ app.get("/test", (req, res) => {
 });
 const path = require('path')
 
-
-
 //declaration
 app.use(express.static(path.join(__dirname, '/../client/build')));
-
-app.use('/*', express.static(path.join(__dirname, '/../client/build')));
 //production mode
 if (process.env.NODE_ENV === 'production') {
-    app.use('/*', express.static(path.join(__dirname, '/../client/build')));
+    app.use(express.static(path.join(__dirname, '/../client/build')));
     app.get('*', (req, res) => { res.sendfile(path.join(__dirname = '/../client/build/index.html')); })
 }
 //build mode
