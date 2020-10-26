@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, '/../client/build')));
 //production mode
 if (process.env.NODE_ENV === 'production') {
   app.get('*', function(req, res) {
-    res.sendFile('/../client/build/index.html', { root: __dirname }, function(err) {
+    res.sendFile('index.html', { root: __dirname }, function(err) {
       if (err) {
         res.status(500).send(err);
       }
