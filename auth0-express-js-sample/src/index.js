@@ -33,7 +33,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send(err.message);
 });
 app.get("/test", (req, res) => {
-  res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+  res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
 });
 const path = require('path')
 
@@ -41,18 +41,16 @@ const path = require('path')
 app.use(express.static(path.join(__dirname, '/../client/build')));
 //production mode
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/../client/build')));
-    app.get('*', (req, res) => { path.join(__dirname = '/../client/build/index.html')
-    , function(err) {
+  app.get('*', function(req, res) {
+    res.sendFile('index.html', { root: __dirname }, function(err) {
       if (err) {
-        console.log(err);
-        res.status(500).send(err); 
-  
-  })
-
-}
+        res.status(500).send(err);
+      }
+    });
+  });
+  }
 //build mode
-app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/../client/public/index.html'));})
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname + '/../client/public/index.html')); })
 
 // if (app.get('env') === 'production') { we maybe need this.
 //   sess.cookie.secure = true
@@ -64,5 +62,5 @@ app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/../client/publi
  */
 
 app.listen(process.env.PORT || serverPort, () =>
-  console.log(`API Server listening on port ${serverPort}`)
-);
+    console.log(`API Server listening on port ${serverPort}`)
+  );
