@@ -37,14 +37,21 @@ app.get("/test", (req, res) => {
 });
 const path = require('path')
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '/../client/build')))
+//declaration
+app.use(express.static(path.join(__dirname, '/../client/build')));
+//production mode
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/../client/build')));
+    app.get('*', (req, res) => { res.sendfile(path.join(__dirname = '/../client/build/index.html')); })
+}
+//build mode
+app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/../client/public/index.html'));})
 
-// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/public/index.html'))
-})
-
+if (app.get('env') === 'production') {
+  sess.cookie.secure = true
+  sess.proxy = true
+  app.set('trust proxy', 1)
+}
 /**
  * Server Activation
  */
