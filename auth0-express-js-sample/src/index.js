@@ -48,8 +48,7 @@ if (process.env.NODE_ENV === 'production') {
 app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/../client/public/index.html'));})
 
 if (app.get('env') === 'production') {
-  sess.cookie.secure = true
-  sess.proxy = true
+
   app.set('trust proxy', 1)
 }
 /**
