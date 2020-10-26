@@ -37,20 +37,25 @@ app.get("/test", (req, res) => {
 });
 const path = require('path')
 
+
+
 //declaration
 app.use(express.static(path.join(__dirname, '/../client/build')));
+
+app.use('/*', express.static(path.join(__dirname, '/../client/build')));
 //production mode
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/../client/build')));
+    app.use('/*', express.static(path.join(__dirname, '/../client/build')));
     app.get('*', (req, res) => { res.sendfile(path.join(__dirname = '/../client/build/index.html')); })
 }
 //build mode
 app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/../client/public/index.html'));})
 
-if (app.get('env') === 'production') {
-
-  app.set('trust proxy', 1)
-}
+// if (app.get('env') === 'production') { we maybe need this.
+//   sess.cookie.secure = true
+//   sess.proxy = true
+//   app.set('trust proxy', 1)
+// }
 /**
  * Server Activation
  */
