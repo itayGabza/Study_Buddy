@@ -20,20 +20,16 @@ const apiRouter = express.Router();
  *  App Configuration
  */
 
-//app.use(helmet());
-
-
-app.use(cors(
-  {
-    // Website you wish to allow to connect
-    origin: '*',
-    // Request methods you wish to allow
-    methods: 'GET, POST, PUT, DELETE',
-    // Request headers you wish to allow
-    allowedHeaders: '*',
-    // to the API (e.g. in case you use sessions)
-    credentials: true
-  }
+app.use(helmet());
+app.use(cors({
+   // Website you wish to allow to connect
+   origin: '*',
+   // Request methods you wish to allow
+   methods: 'GET, POST, PUT, DELETE',
+   // Request headers you wish to allow
+   allowedHeaders: '*',
+   // to the API (e.g. in case you use sessions)
+   credentials: true}
 ));
 app.use(express.json());
 
