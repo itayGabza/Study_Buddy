@@ -3,11 +3,17 @@
 This repository contains a Node.js project that defines an Express API. You'll secure this API with Auth0 to practice making secure API calls from a client application.
 
 ## Get Started
-
-Install the client project dependencies:
+Ask the .env files from me (Daniel). 
+to run the server on development mode : 
+run on terminal 
+```bash
+npm run dev
+```
+to run the server on production mode : 
+run on terminal 
 
 ```bash
-npm install
+(cd client/ && npm run build)
 ```
 
 Create `.env` file under the project directory:
@@ -51,8 +57,4 @@ The `audience` property is the value of `AUTH0_AUDIENCE`.
 
 The `issuer` property is the value of `AUTH0_ISSUER_URL`.
 
-Run the Node.js project:
 
-```bash
-npm start
-```
