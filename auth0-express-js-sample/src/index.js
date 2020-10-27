@@ -19,7 +19,6 @@ const apiRouter = express.Router();
 /**
  *  App Configuration
  */
-
 // app.use(helmet());
 app.use(cors({
    // Website you wish to allow to connect
