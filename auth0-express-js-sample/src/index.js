@@ -20,8 +20,21 @@ const apiRouter = express.Router();
  *  App Configuration
  */
 
-app.use(helmet());
-app.use(cors({ origin: clientOrigins }));
+//app.use(helmet());
+
+
+app.use(cors(
+  {
+    // Website you wish to allow to connect
+    origin: '*',
+    // Request methods you wish to allow
+    methods: 'GET, POST, PUT, DELETE',
+    // Request headers you wish to allow
+    allowedHeaders: '*',
+    // to the API (e.g. in case you use sessions)
+    credentials: true
+  }
+));
 app.use(express.json());
 
 app.use("/api", apiRouter);
@@ -51,6 +64,8 @@ if (process.env.NODE_ENV === 'production') {
   }
 //build mode
 app.get('*', (req, res) => { res.sendFile(path.join(__dirname + '/../client/public/index.html')); })
+
+
 
 // if (app.get('env') === 'production') { we maybe need this.
 //   sess.cookie.secure = true
