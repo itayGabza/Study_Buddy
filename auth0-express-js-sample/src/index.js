@@ -15,7 +15,6 @@ const { messagesRouter } = require("./messages/messages.router");
 
 const app = express();
 const apiRouter = express.Router();
-
 /**
  *  App Configuration
  */
