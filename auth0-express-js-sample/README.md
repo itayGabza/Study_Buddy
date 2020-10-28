@@ -14,6 +14,7 @@ run on terminal
 
 ```bash
 (cd client/ && npm run build)
+npm build
 ```
 
 Create `.env` file under the project directory:
