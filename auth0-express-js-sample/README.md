@@ -3,6 +3,9 @@
 This repository contains a Node.js project that defines an Express API. You'll secure this API with Auth0 to practice making secure API calls from a client application.
 
 ## Get Started
+```bash
+npm install
+(cd client/ && np, install)```
 Ask the .env files from me (Daniel). 
 to run the server on development mode : 
 run on terminal 
