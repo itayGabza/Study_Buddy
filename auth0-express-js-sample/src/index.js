@@ -39,7 +39,14 @@ app.use(function (err, req, res, next) {
   console.log(err);
   res.status(500).send(err.message);
 });
-customers = require("./routes/customer.routes.js")(app);
+
+
+require("./routes/turorial.routes.js")(app);
+const db = require("./models/db.js");
+
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 app.get("/test", (req, res) => {
   res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
@@ -61,15 +68,6 @@ if (process.env.NODE_ENV === 'production') {
 //build mode
 app.get('*', (req, res) => { res.sendFile(path.join(__dirname + '/../client/public/index.html')); })
 
-
-// if (app.get('env') === 'production') { we maybe need this.
-//   sess.cookie.secure = true
-//   sess.proxy = true
-//   app.set('trust proxy', 1)
-// }
-/**
- * Server Activation
- */
 
 app.listen(process.env.PORT || serverPort, () =>
     console.log(`API Server listening on port ${serverPort}`)

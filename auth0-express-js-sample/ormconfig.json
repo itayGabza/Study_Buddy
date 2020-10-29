@@ -1,0 +1,10 @@
+
+   {
+   "type": "mysql",
+   "host": "us-cdbr-east-02.cleardb.com",
+   "port": 3306,
+   "username": "b78a75434af81",
+   "password": "d1750332",
+   "database": "heroku_b9eb955d3d8dd77"
+
+}
