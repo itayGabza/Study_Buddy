@@ -39,6 +39,8 @@ app.use(function (err, req, res, next) {
   console.log(err);
   res.status(500).send(err.message);
 });
+customers = require("./routes/customer.routes.js")(app);
+
 app.get("/test", (req, res) => {
   res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
 });
@@ -58,7 +60,6 @@ if (process.env.NODE_ENV === 'production') {
   }
 //build mode
 app.get('*', (req, res) => { res.sendFile(path.join(__dirname + '/../client/public/index.html')); })
-
 
 
 // if (app.get('env') === 'production') { we maybe need this.

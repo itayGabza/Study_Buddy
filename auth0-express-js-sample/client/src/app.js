@@ -22,6 +22,7 @@ const App = () => {
       <div className="container flex-grow-1">
         <Switch>
           <Route path="/" exact component={Home} />
+
           <ProtectedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/external-api" component={ExternalApi} />
         </Switch>
