@@ -3,63 +3,27 @@
 This repository contains a Node.js project that defines an Express API. You'll secure this API with Auth0 to practice making secure API calls from a client application.
 
 ## Get Started
+make sure you at /auth0-express-js-sample folder 
+then : 
 ```bash
 npm install
-(cd client/ && np, install)```
+(cd client/ && npm install)
+```
 Ask the .env files from me (Daniel). 
 to run the server on development mode : 
 run on terminal 
 ```bash
 npm run dev
 ```
-to run the server on production mode : 
+to run the server on production mode (to make sure everything are working before pushing to the cloud) : 
 run on terminal 
 
 ```bash
 (cd client/ && npm run build)
 npm start
-
 ```
 
-Create `.env` file under the project directory:
-
-```bash
-touch .env
-```
-
-Populate `.env` as follows:
-
-```bash
-SERVER_PORT=6060
-CLIENT_ORIGIN_URL=http://localhost:4040
-AUTH0_AUDIENCE=
-AUTH0_ISSUER_URL=
-```
-
-Get the values for `AUTH0_AUDIENCE` and `AUTH0_ISSUER` from your Auth0 API in the Dashboard. You can find these values by following this path in the Dashboard:
-
-**APIs > Your API > Quick Start > Node.js**
-
-Locate the definition of `jwtCheck` on the code snippet:
- 
-```javascript
-var jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: "https://<TENANT-NAME>.auth0.com/.well-known/jwks.json",
-  }),
-  audience: "https://express.sample", // 👈 AUTH0_AUDIENCE value
-  issuer: "https://<TENANT-NAME>.auth0.com/", // 👈 AUTH0_ISSUER_URL value
-  algorithms: ["RS256"],
-});
-```
-
-Look at the object that the `jwt` function takes as argument and use the following properties to complete the values of your `.env` file:
-
-The `audience` property is the value of `AUTH0_AUDIENCE`.
-
-The `issuer` property is the value of `AUTH0_ISSUER_URL`.
-
-
+## Links: 
+[ORM MY SQL on the backend server (CRUD)](https://bezkoder.com/node-js-express-sequelize-mysql/) 
+[React Hooks,  example of how to call the backend from the frontend](https://bezkoder.com/react-hooks-crud-axios-api/)
+[the origin of the toturial](https://bezkoder.com/react-node-express-mysql/)
