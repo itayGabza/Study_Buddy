@@ -19,6 +19,8 @@ const App = () => {
     return <Loading />;
   }
   return (
+    <div>
+    <Route path="/test" exact component={ContentCard} />
     <div id="app" className="d-flex flex-column h-100">
       <NavBar />
       <div className="container flex-grow-1">
@@ -30,6 +32,8 @@ const App = () => {
       </div>
       <Footer />
     </div>
+    </div>
+
   );
 };
 
