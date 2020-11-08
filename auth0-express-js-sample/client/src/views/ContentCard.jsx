@@ -19,12 +19,10 @@ const team_data = [{
 }
 
 ]
-
 const ContentCard = (props) => {
     console.log(props)
     return (
         Object.keys(team_data).map((item, i) => (
-
                 <div className={'ContentCard'} id={i} >
                     <Card className={'card'} elevation={5}>
                         <CardMedia className={'AvatarContainer'}>
