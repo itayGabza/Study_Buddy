@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import objectAssign from 'object-assign';
 import ContentCard from '../views/ContentCard'
+import HomeImage from '../data/img/home.jpg'
 
 const propTypes = {
   location: PropTypes.shape({
@@ -20,10 +21,9 @@ function HashLinkPage() {
 
   return (
     <div>
-      <section style={objectAssign({ backgroundColor: '#E0E0E0' }, sectionStyle)} id="section-one">
-        <h2 style={h2Style}>Section One</h2>
-        <h3 style={h3Style}>Go to:</h3>
-       
+      <section style={objectAssign({  }, )} id="section-one">
+        <img src={HomeImage}></img>
+
       </section>
       <section  id="section-two">
       <ContentCard ></ContentCard>

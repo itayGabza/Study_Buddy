@@ -6,7 +6,7 @@ const Footer = () => (
     <p>
       Sample project provided by{" "}
       <a target="_blank" rel="noopener noreferrer" href="https://auth0.com">
-        Daniel
+        Study buddy
       </a>
     </p>
   </footer>
