@@ -19,15 +19,18 @@ function HashLinkPage() {
     boxSizing: 'border-box',
     height: '100vh',
   };
+  
   const h2Style = { fontSize: '22px' };
   const h3Style = { fontSize: '18px', marginTop: '2.5vh' };
 
   return (
-    <div>
-      <section style={objectAssign({},)} id="section-one">
-        <img src={HomeImage}></img>
+    <div >
+          <div id="section-one" >
 
-      </section>
+     {/* <section style={objectAssign({},)} id="section-one"> */}
+        <img src={HomeImage} className= "responsie_img"></img>
+        </div >
+      {/* </section> */}
       <section id="post">
         <div className="feed">
           <Post></Post>

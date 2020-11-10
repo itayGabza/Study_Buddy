@@ -55,3 +55,8 @@
 	padding: 10px 0 0 0;
 	color: #888;
 }
+
+.responsie_img{
+  max-width: 100%;
+  height: auto;
+}
