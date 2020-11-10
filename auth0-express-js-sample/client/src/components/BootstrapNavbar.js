@@ -19,12 +19,16 @@ class BootstrapNavbar extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
-                            <Navbar.Brand href="#home">Study buddy</Navbar.Brand>
+                            <Navbar.Brand href="/">Study buddy</Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="mr-auto">
-                                <Interactive as={HashLink} smooth className="nav-link"
+                                    <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#section-one`}>בית </Interactive>
+                                    <Interactive as={HashLink} smooth className="nav-link"
+                                        activeClassName="router-link-exact-active" to={`/#post`}>פרסם פוסט </Interactive>
+                                    <Interactive as={HashLink} smooth className="nav-link"
+                                        activeClassName="router-link-exact-active" to={`/#feed`}>חפש שותף  </Interactive>
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#section-two`}>הצוות</Interactive>
 
