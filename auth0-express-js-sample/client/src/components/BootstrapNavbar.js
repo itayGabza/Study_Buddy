@@ -6,6 +6,7 @@ import {
     useParams,
 } from "react-router-dom";
 import AuthNav from "./auth-nav";
+import {NavLink,} from "react-router-dom";
 
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import Interactive from 'react-interactive';
@@ -32,8 +33,15 @@ class BootstrapNavbar extends React.Component {
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#section-two`}>הצוות</Interactive>
 
-                                    <Nav.Link href="/profile">פרופיל</Nav.Link>
+                                    <NavLink
+                                        to="/profile"
+                                        exact
+                                        className="nav-link"
+                                        activeClassName="router-link-exact-active"
+                                    >
 
+                                        Profile
+    </NavLink>
                                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
