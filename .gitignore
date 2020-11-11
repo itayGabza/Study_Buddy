@@ -1,6 +1,8 @@
 # compiled output
 node_modules
 client/build
+/package-lock.json
+auth0-express-js-sample/tryouts.js
 # Logs
 logs
 *.log
