@@ -4,6 +4,7 @@ import objectAssign from 'object-assign';
 import ContentCard from '../views/ContentCard'
 import Feed from '../views/Feed'
 import Post from '../views/Post'
+import Blog from '../components/Blog'
 
 import HomeImage from '../data/img/home.jpg'
 
@@ -40,6 +41,10 @@ function HashLinkPage() {
         <div className="feed">
           <Feed ></Feed>
         </div>
+      </section>
+      <section>
+        <Blog />
+        <h1>SUPPPP</h1>
       </section>
       <section id="section-two">
         <ContentCard ></ContentCard>
