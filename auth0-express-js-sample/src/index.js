@@ -40,8 +40,9 @@ app.use(function (err, req, res, next) {
   console.log(err);
   res.status(500).send(err.message);
 });
-
 require("./routes/turorial.routes.js")(app);
+require("./routes/students.routes.js")(app);
+
 const db = require("./models/db.js");
 
 // db.sequelize.sync({ force: true }).then(() => {

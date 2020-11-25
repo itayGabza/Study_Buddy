@@ -10,6 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       published: {
         type: Sequelize.BOOLEAN
       }
+      // timestamps: false  //canceling the auto function of createdAT and updatedAt
     });
   
     return Tutorial;
