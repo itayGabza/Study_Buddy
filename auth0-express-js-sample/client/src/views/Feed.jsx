@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import './Feed.scss'
 import ForumCard from '../components/ForumCard';
-import DropDown from '../components/DropDown';
+// import DropDown from '../components/DropDown';
 import SearchComp from '../components/Search/SearchComp';
 
 import Filters from '../components/Filters';

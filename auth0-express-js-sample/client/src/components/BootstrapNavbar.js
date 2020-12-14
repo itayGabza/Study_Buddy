@@ -1,10 +1,4 @@
 import React from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams,
-} from "react-router-dom";
 import AuthNav from "./auth-nav";
 import {NavLink,} from "react-router-dom";
 
@@ -24,7 +18,8 @@ class BootstrapNavbar extends React.Component {
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="mr-auto">
-                                    <Interactive className="ml-auto" as={HashLink} smooth className="nav-link"
+                                    {/* <Interactive className="ml-auto" as={HashLink} smooth className="nav-link" */}
+                                    <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#section-one`}>בית </Interactive>
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#post`}>פרסום פוסט </Interactive>

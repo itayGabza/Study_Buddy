@@ -6,7 +6,6 @@ import Filters from './Filters';
 import './Filters.css';
 import { Jumbotron } from 'react-bootstrap';
 import { FormCard } from '../views/Feed';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './NewRequest.css';
