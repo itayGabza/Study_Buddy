@@ -22,7 +22,6 @@ const Blog = () => {
   }, [backend_url]);
 
   if (load) {
-      console.log("names: " + names);
     return (
       <ul>
         {error ? (
@@ -36,7 +35,7 @@ const Blog = () => {
             // names is not an array, so names.map is invalid, causing a crash.
             // names get "res.data" (line 14) which currently is a long string of HTML tags.
             // I don't know what you wanted to achieve, so I commented the whole "names.map" section above to avoid the crash.
-            
+
             <div />
         }
       </ul>
