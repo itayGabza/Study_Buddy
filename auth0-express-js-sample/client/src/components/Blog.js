@@ -31,11 +31,6 @@ const Blog = () => {
             // <li key={index}>
             //  <h1>{name}</h1>
             // </li>}
-
-            // names is not an array, so names.map is invalid, causing a crash.
-            // names get "res.data" (line 14) which currently is a long string of HTML tags.
-            // I don't know what you wanted to achieve, so I commented the whole "names.map" section above to avoid the crash.
-
             <div />
         }
       </ul>
