@@ -10,6 +10,14 @@ const AutoComplete = ({ data, onSelect }) => {
     const searchResultRef = useRef(null);
 
     useEffect(() => {
+        const handleClickOutside = event => {
+            if (
+                searchContainer.current &&
+                !searchContainer.current.contains(event.target)
+            ) {
+                hideSuggestion();
+            }
+        };
         window.addEventListener("mousedown", handleClickOutside);
 
         return () => {
@@ -24,15 +32,6 @@ const AutoComplete = ({ data, onSelect }) => {
         });
     };
 
-    useEffect(() => {
-        if (cursor < 0 || cursor > suggestions.length || !searchResultRef) {
-            return () => {};
-        }
-
-        let listItems = Array.from(searchResultRef.current.children);
-        listItems[cursor] && scrollIntoView(listItems[cursor].offsetTop);
-    }, [cursor]);
-
     const suggestions = useMemo(() => {
         if (!search) return data;
 
@@ -44,14 +43,14 @@ const AutoComplete = ({ data, onSelect }) => {
         );
     }, [data, search]);
 
-    const handleClickOutside = event => {
-        if (
-            searchContainer.current &&
-            !searchContainer.current.contains(event.target)
-        ) {
-            hideSuggestion();
+    useEffect(() => {
+        if (cursor < 0 || cursor > suggestions.length || !searchResultRef) {
+            return () => {};
         }
-    };
+
+        let listItems = Array.from(searchResultRef.current.children);
+        listItems[cursor] && scrollIntoView(listItems[cursor].offsetTop);
+    }, [cursor, suggestions.length]);
 
     const showSuggestion = () => setVisiblity(true);
 

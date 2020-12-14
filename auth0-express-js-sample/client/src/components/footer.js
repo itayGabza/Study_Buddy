@@ -18,7 +18,7 @@ function Footer() {
                                     justifyContent: 'center'
                                 }}
                             >
-                                <img src="\pictures\logo.jpeg" width={"100px"} height={"100px"} />
+                                <img src="\pictures\logo.jpeg" width={"100px"} height={"100px"} alt="" />
                                <h5>Developed by BGU Core Team</h5><Copyright fontSize="small"/>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const useVisiblityToggler = (component, visiblity = false) => {
     const [visible, setVisiblity] = useState(() => visiblity);

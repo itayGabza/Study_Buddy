@@ -3,8 +3,8 @@ import './nav-bar.scss'
 
 import React from "react";
 
-import MainNav from "./main-nav";
-import AuthNav from "./auth-nav";
+// import MainNav from "./main-nav";
+// import AuthNav from "./auth-nav";
 import BootstrapNavbar from "./BootstrapNavbar"
 const NavBar = () => {
   return (
