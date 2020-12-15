@@ -1,26 +1,26 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const Students = sequelize.define("students", {
+    const Dts = sequelize.define("detailsToShow", {
       email: {
         type: Sequelize.STRING,
         primaryKey: true
       },
-      name: {
-        type: Sequelize.STRING
-      },    
-      password: {
-        type: Sequelize.STRING
-      },
       gender: {
         type: Sequelize.STRING
-      },
-      age: {
+      },    
+      whatsapp: {
         type: Sequelize.INTEGER
       },
-      degree: {
+      email: {
         type: Sequelize.STRING
+      },
+      facebook: {
+        type: Sequelize.STRING
+      },
+      picture: {
+        type: Sequelize.STRING  //TODO to correct!!!!
       }
     }, {timestamps: false});
-    Students.removeAttribute('id');
-    return Students;
+    Dts.removeAttribute('id');
+    return Dts;
   };

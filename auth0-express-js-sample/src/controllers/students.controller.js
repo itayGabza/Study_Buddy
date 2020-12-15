@@ -1,5 +1,6 @@
 const db = require("../models/db.js");
 const Student = db.students;
+const Requests = db.requests;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Student
@@ -53,15 +54,43 @@ exports.findAll = (req, res) => {
 
 // Find a single Student with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const email = req.params.email;
 
-  Student.findByPk(id)
+
+  // return Tutorial.findByPk(tutorialId, { include: ["comments"] })
+  // .then((tutorial) => {
+  //   return tutorial;
+  // })
+  // .catch((err) => {
+  //   console.log(">> Error while finding tutorial: ", err);
+  // });
+
+  // Student.findByPk(email, { include: ["requests"] })
+  //   .then((data) => {
+  //     return data;
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send({
+  //       message: "Error retrieving Student with email=" + email
+  //     });
+  //   });
+
+  Student.findByPk(email)
     .then(data => {
       res.send(data);
+      res.send(Requests.findByPk(email))
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error retrieving Requests with id=" + id
+        });
+      });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Student with id=" + id
+        message: "Error retrieving Student with email=" + email
       });
     });
 };

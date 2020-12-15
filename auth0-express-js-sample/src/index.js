@@ -42,6 +42,13 @@ app.use(function (err, req, res, next) {
 });
 require("./routes/turorial.routes.js")(app);
 require("./routes/students.routes.js")(app);
+require("./routes/courses.routes.js")(app);
+require("./routes/degrees.routes.js")(app);
+require("./routes/detailsToShow.routes.js")(app);
+require("./routes/reqAv.routes.js")(app);
+require("./routes/requests.routes.js")(app);
+// require("./routes/studentCourses.routes.js")(app);   //TODO
+
 
 const db = require("./models/db.js");
 
@@ -99,8 +106,6 @@ const Tutorials = db.tutorials;
 //   description: "Tut#1 Description",
 //   published: false,
 // });
-
-
 // end tryouts  ------------------------------------------------------------------------------------------------------------------------------------------------
 
 

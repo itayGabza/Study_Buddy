@@ -1,0 +1,27 @@
+
+module.exports = (sequelize, Sequelize) => {
+    const Requests = sequelize.define("requests", {
+      DT: {
+        type: Sequelize.DATE,  //TODO add day time!!!
+        primaryKey: true
+      },
+      email: {
+        type: Sequelize.STRING,
+        primaryKey: true
+      },    
+      course: {
+        type: Sequelize.STRING
+      },
+      studyMethod: {
+        type: Sequelize.STRING
+      },
+      studyingFor: {
+        type: Sequelize.STRING
+      },
+      groupSize: {
+        type: Sequelize.STRING
+      }
+    }, {timestamps: false});
+    Requests.removeAttribute('id');
+    return Requests;
+  };
