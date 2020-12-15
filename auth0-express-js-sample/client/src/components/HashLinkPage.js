@@ -5,6 +5,7 @@ import ContentCard from "../views/ContentCard";
 import Feed from "../views/Feed";
 import Post from "../views/Post";
 import Blog from "../components/Blog";
+import SignUp from "../components/SignUp";
 
 import HomeImage from "../data/img/home.jpg";
 
@@ -44,6 +45,7 @@ function HashLinkPage() {
       <section>
         <Blog />
         <h1>SUPPPP</h1>
+        <SignUp />
       </section>
       <section id="section-two">
         <ContentCard></ContentCard>

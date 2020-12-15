@@ -12,7 +12,6 @@ const Blog = () => {
       .get(`${backend_url}/test`)
       .then((res) => {
         setNames(res.data);
-        alert("second alert");
         setLoad(true);
       })
       .catch((err) => {
@@ -27,10 +26,10 @@ const Blog = () => {
         {error ? (
           <li>{error.message}</li>
         ) : 
-            // {names.map((name, index) => (
+          /*   // {names.map((name, index) => (
             // <li key={index}>
             //  <h1>{name}</h1>
-            // </li>}
+            // </li>} */
             <div />
         }
       </ul>
