@@ -9,9 +9,6 @@ module.exports = app => {
     // Retrieve all Students
     router.get("/students", students.findAll);
   
-    // Retrieve all published students
-    router.get("/published", students.findAllPublished);
-  
     // Retrieve a single Student with email
     router.get("/:email", students.findOne);
   

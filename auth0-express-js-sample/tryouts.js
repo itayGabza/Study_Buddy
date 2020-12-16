@@ -25,3 +25,54 @@ console.log("end --------------------------------------");
 // console.log("env is" , process.env);
 
 process.exit();
+
+
+
+
+// // yuvals tryouts -------------------------------------------------------------------------------------------------------------------------------------------------
+// const sequelize = require("sequelize");
+
+
+// // Params Example
+// function returnHello(req, res) {
+//   const id = req.params.id;
+//   const stamMashu = req.params.stamMashu;
+//   res.send("Your id is " + id + " and you also sent " + stamMashu);
+// }
+// app.get("/helloWorld/:id/:stamMashu", returnHello);
+
+// //Body Example
+// app.get("/helloWorld2/", (req, res) => {
+//   const bodydata = req.body;
+
+// });
+
+
+// app.get("/test2", (req, res) => {
+//   res.json(["whatsaapppp", "LLLL54isa", "Michael", "Ginger", "Food"]);
+//   res.json([db.tutorials.json]);
+// });
+// app.get("/test3", (req, res) => {
+//   const title = req.query.title;
+//   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+
+//   Tutorial.findAll({ where: condition })
+//     .then(data => {
+//       res.send(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error occurred while retrieving tutorials."
+//       });
+//     });
+// });
+
+// const Tutorials = db.tutorials;
+// // const controller = require("./controllers/tutorial.controller");
+// // const tut1 =  controller.create({
+// //   title: "Tut#1",
+// //   description: "Tut#1 Description",
+// //   published: false,
+// // });
+// // end tryouts  ------------------------------------------------------------------------------------------------------------------------------------------------

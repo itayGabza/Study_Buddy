@@ -3,10 +3,13 @@ const Student = db.students;
 const Requests = db.requests;
 const Op = db.Sequelize.Op;
 
+
+//Email*	name	password	gender	age	degree
 // Create and Save a new Student
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  const body = req.body;
+  if (!body.title || !body.name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -158,21 +161,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all Student."
-      });
-    });
-};
-
-// Find all published Student
-exports.findAllPublished = (req, res) => {
-  console.log("got into published students")
-  Student.findAll()
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Student."
       });
     });
 };

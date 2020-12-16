@@ -3,7 +3,36 @@ const Requests = db.requests;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Request
-
+  // Create a request
+  exports.create = (req , res) => {
+    // Validate request
+    const body = req.body;
+    if (!body.studentmail || !body.course || !body.studyMethod || !body.studyingFor) {
+      res.status(400).send({
+        message: "having problems with creating requests. wrong parameters were sent"
+      });
+      return;
+    }
+  const request = {
+    studentemail: req.body.studentemail,
+    course: body.course,
+    studyMethod: body.description,
+    studyingFor: body.studyingFor,
+    groupSize: body.groupSize ? body.groupSize : 2
+  };
+  // Save Students in the database
+  Requests.create(request)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the request"
+      });
+      return;
+    });
+  };
 
 // Retrieve all Requests from the database.
 exports.findAll = (req, res) => {
@@ -27,15 +56,15 @@ exports.findAll = (req, res) => {
 
 // Find a single Requests with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const email = req.params.email;
 
-  Requests.findByPk(id)
+  Requests.findByPk(email)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Requests with id=" + id
+        message: "Error retrieving Requests with email=" + email
       });
     });
 };
