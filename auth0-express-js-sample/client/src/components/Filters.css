@@ -1,4 +1,61 @@
-.formgroup {
-   margin-top: -20px ;
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  /* padding-right: 15px; */
+  /* padding-left: 15px; */
+  margin-right: 4%;
+  margin-left: 4%;
+}
+.gridDesign {
+  margin-top: 2%;
+  margin-right: 4%;
+  margin-left: 4%;
+}
 
-} 
+button {
+  color: #1f84e0;
+  background: none;
+  border: none;
+}
+button:hover {
+  color: blue;
+  text-decoration: underline;
+}
+button + button {
+  margin-left: 0.5rem;
+}
+
+.row {
+  display: table;
+  flex-direction: row;
+  background: rgb(238, 238, 196);
+}
+
+.col-sm-2 {
+  text-align: right;
+  border: 1px solid rgb(223, 223, 193);
+  flex: margin-left;
+  display: block;
+  flex-flow: row wrap;
+}
+
+/* @media all and (max-width: 600px) {
+  a {
+    font-size: 80px;
+  }
+} */
+
+body {
+  direction: rtl;
+}
+
+a {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 2px;
+  text-align: center;
+  display: block;
+}
