@@ -107,15 +107,14 @@ const Feed = () => {
       /> */}
       <SearchComp/>
       
-
-      <h4> Select Filters:</h4>
-      <div class="bigjumbo">
+      <a>
+      <h4> סנן את החיפוש</h4>
+      </a>
+      <div >
         <Jumbotron >
 
           <p>
-            <div class="jumbo">
               <Filters />
-            </div>
           </p>
         </Jumbotron>
       </div>

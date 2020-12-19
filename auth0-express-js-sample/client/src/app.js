@@ -21,9 +21,9 @@ const App = () => {
   return (
     <div>
     <Route path="/test" exact component={ContentCard} />
-    <div id="app" className="d-flex flex-column h-100">
+    <div id="app" class="container-fluid" >
       <NavBar />
-      <div className="container flex-grow-1">
+      <div >
         <Switch>
           <Route path="/" exact component={HashLinkPage} />
           <ProtectedRoute path="/profile" component={Profile} />

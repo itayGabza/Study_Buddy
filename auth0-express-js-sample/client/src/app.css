@@ -1,4 +1,17 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
+a{
+  display: flex;
+
+}
+.container-fluid{
+  padding-right:5%;
+  padding-left: 5%;
+  direction: rtl;
+}
 
 .next-steps .fa-link {
   margin-right: 5px;

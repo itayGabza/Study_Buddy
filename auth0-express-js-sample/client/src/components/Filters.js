@@ -39,9 +39,11 @@ class Filters extends Component {
 
   comparer = (otherArray) => {
     return function (current) {
+
       return (
+        
         otherArray.filter(function (other) {
-          return other.value === current.value && other.label === current.label;
+          return other.value === current.value && other.value === current.value;
         }).length === 0
       );
     };
@@ -109,13 +111,13 @@ class Filters extends Component {
         </div> */}
 
         <div class="container" className="gridDesign">
-          <div class="row">
+          <div class="row " className="rowFilter">
             {this.state.columnsToRender[0] === true ? (
               <div class="col-sm-2">
                 <a>{"סוג"}</a>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "1" ? (
-                    <div class="mb-3">
+                    <div class="mb-2">
                       <button href="#" onClick={() => this.addToList(item)}>
                         {item.label}
                       </button>
@@ -131,7 +133,7 @@ class Filters extends Component {
                 <a>{"מגדר"}</a>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "2" ? (
-                    <div class="mb-3">
+                    <div class="mb-2 ">
                       <button href="#" onClick={() => this.addToList(item)}>
                         {item.label}
                       </button>
@@ -143,11 +145,11 @@ class Filters extends Component {
               </div>
             ) : null}
             {this.state.columnsToRender[2] === true ? (
-              <div class="col-sm-2">
+              <div class="col-sm-2 d-flex">
                 <a>{"רמת שליטה בחומר"}</a>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "3" ? (
-                    <div class="mb-3">
+                    <div class="mb-2 ">
                       <button href="#" onClick={() => this.addToList(item)}>
                         {item.label}
                       </button>
@@ -163,7 +165,7 @@ class Filters extends Component {
                 <a>{"סביבת הלמידה"}</a>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "4" ? (
-                    <div class="mb-3">
+                    <div class="mb-2">
                       <button href="#" onClick={() => this.addToList(item)}>
                         {item.label}
                       </button>
@@ -179,7 +181,7 @@ class Filters extends Component {
                 <a>{"זמן מועדף ללמידה"}</a>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "5" ? (
-                    <div class="mb-3">
+                    <div class="mb-2">
                       <button href="#" onClick={() => this.addToList(item)}>
                         {item.label}
                       </button>

@@ -28,10 +28,11 @@ button + button {
   margin-left: 0.5rem;
 }
 
-.row {
+.rowFilter {
   display: table;
   flex-direction: row;
   background: rgb(238, 238, 196);
+  width: 100%;
 }
 
 .col-sm-2 {
