@@ -118,8 +118,7 @@ const Feed = () => {
           </p>
         </Jumbotron>
       </div>
-      <h4> Results
-                Found:</h4>
+      <h4> תוצאות החיפוש:</h4>
       {compsToRender}
     </div> :
     <text className="feedText">Login to see the feed </text>)

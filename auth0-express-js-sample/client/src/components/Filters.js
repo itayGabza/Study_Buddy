@@ -1,28 +1,30 @@
 import React, { Component } from "react";
+import chroma from "chroma-js";
 import Select from "react-select";
 import "./Filters.css";
+import colourStyles from "./FiltesStyle.js";
 // import { filter, findWhere,} from "underscore";
 import "bootstrap/dist/css/bootstrap.css";
 const options = [
-  { value: "homeWork", label: "שיעורי בית", column: "1" },
-  { value: "test", label: "למידה למבחן", column: "1" },
-  { value: "other", label: "אחר", column: "1" },
-  { value: "male", label: "גבר", column: "2" },
-  { value: "female", label: "אישה", column: "2" },
-  { value: "mix", label: "תביאו לי הכל מהכל", column: "2" },
-  { value: "good", label: "טוב", column: "3" },
-  { value: "medium", label: "בינוני", column: "3" },
-  { value: "bad", label: "מתקשה", column: "3" },
-  { value: "zoom", label: "זום", column: "4" },
-  { value: "frontal", label: "פנים מול פנים", column: "4" },
-  { value: "morning", label: "בבוקר", column: "5" },
-  { value: "noon", label: "בצהריים", column: "5" },
-  { value: "afterNoon", label: "אחר הצהריים", column: "5" },
-  { value: "Evening", label: "בערב", column: "5" },
-  { value: "2", label: "2", column: "6" },
-  { value: "3", label: "3", column: "6" },
-  { value: "4", label: "4", column: "6" },
-  { value: "5Plus", label: "5+", column: "6" }
+  { value: "homeWork", label: "שיעורי בית", column: "1", color:'red' },
+  { value: "test", label: "למידה למבחן", column: "1",color: 'red' },
+  { value: "other", label: "אחר", column: "1", color: 'red'  },
+  { value: "male", label: "גבר", column: "2", color: 'orange' },
+  { value: "female", label: "אישה", column: "2" , color:'orange'},
+  { value: "mix", label: "תביאו לי הכל מהכל", column: "2" , color:'orange'},
+  { value: "good", label: "טוב", column: "3" , color:'yellow'},
+  { value: "medium", label: "בינוני", column: "3", color:'yellow' },
+  { value: "bad", label: "מתקשה", column: "3" , color:'yellow'},
+  { value: "zoom", label: "זום", column: "4" , color: 'green'},
+  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green' },
+  { value: "morning", label: "בבוקר", column: "5",color: 'lime' },
+  { value: "noon", label: "בצהריים", column: "5" ,color: 'lime'},
+  { value: "afterNoon", label: "אחר הצהריים", column: "5",color: 'lime' },
+  { value: "Evening", label: "בערב", column: "5",color: 'lime' },
+  { value: "2", label: "2", column: "6" , color: 'olivedrab'},
+  { value: "3", label: "3", column: "6" , color: 'olivedrab'},
+  { value: "4", label: "4", column: "6" , color: 'olivedrab'},
+  { value: "5Plus", label: "5+", column: "6" , color: 'olivedrab'}
 ];
 
 class Filters extends Component {
@@ -106,6 +108,8 @@ class Filters extends Component {
           openMenuOnClick={false}
           menuIsOpen={false}
           placeholder=''
+          styles={colourStyles}
+
         />
         {/* <div className="selected-options">
           {values.length > 0 && values.map((item) => <p>{item.label}</p>)}
