@@ -105,6 +105,7 @@ class Filters extends Component {
           isSearchable={false}
           openMenuOnClick={false}
           menuIsOpen={false}
+          placeholder=''
         />
         {/* <div className="selected-options">
           {values.length > 0 && values.map((item) => <p>{item.label}</p>)}
@@ -145,7 +146,7 @@ class Filters extends Component {
               </div>
             ) : null}
             {this.state.columnsToRender[2] === true ? (
-              <div class="col-sm-2 d-flex">
+              <div class="col-sm-2">
                 <a>{"רמת שליטה בחומר"}</a>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "3" ? (
