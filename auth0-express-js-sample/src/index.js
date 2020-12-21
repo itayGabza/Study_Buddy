@@ -1,45 +1,26 @@
-/**
- * Required External Modules
- */
 
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const { clientOrigins, serverPort } = require("./config/env.dev");
 
-const { messagesRouter } = require("./messages/messages.router");
-
-/**
- * App Variables
- */
-
 const app = express();
 const apiRouter = express.Router();
-/**
- *  App Configuration
- */
-// app.use(helmet());
+// app.use(helmet());                 //helmet is used for securing the Express apps by HTTP headers
 app.use(cors({
-  // Website you wish to allow to connect
-  origin: '*',
-  // Request methods you wish to allow
-  methods: 'GET, POST, PUT, DELETE',
-  // Request headers you wish to allow
-  allowedHeaders: '*',
-  // to the API (e.g. in case you use sessions)
-  credentials: true
+  origin: '*',                        // Website you wish to allow to connect
+  methods: 'GET, POST, PUT, DELETE',  // Request methods you wish to allow
+  allowedHeaders: '*',                // Request headers you wish to allow
+  credentials: true                   // to the API (e.g. in case you use sessions)
 }
 ));
 app.use(express.json());
-
 app.use("/api", apiRouter);
-
-apiRouter.use("/messages", messagesRouter);
-
 app.use(function (err, req, res, next) {
   console.log(err);
   res.status(500).send(err.message);
 });
+
 require("./routes/turorial.routes.js")(app);
 require("./routes/students.routes.js")(app);
 require("./routes/courses.routes.js")(app);
@@ -49,9 +30,7 @@ require("./routes/reqAv.routes.js")(app);
 require("./routes/requests.routes.js")(app);
 // require("./routes/studentCourses.routes.js")(app);   //TODO
 
-
 const db = require("./models/db.js");
-
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });

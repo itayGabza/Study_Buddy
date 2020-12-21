@@ -1,5 +1,7 @@
 const db = require("../models/db.js");
 const Requests = db.requests;
+const Students = db.students;
+
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Request
@@ -55,11 +57,11 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Requests with an id
-exports.findOne = (req, res) => {
+exports.findAllByStudent = (req, res) => {
   const email = req.params.email;
 
-  Requests.findByPk(email)
-    .then(data => {
+  Students.findByPk(email, {include: ["requests"]})
+    .then((data) => {
       res.send(data);
     })
     .catch(err => {

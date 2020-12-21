@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   // Validate request
   const body = req.body;
-  if (!body.title || !body.name) {
+  if (!body.email || !body.name || !body.password || !body.gender || !body.age || !body.degree) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -17,13 +17,16 @@ exports.create = (req, res) => {
   }
 
   // Create a Students
-  const students = {
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.published : false
+  const student = {
+    email: body.email,
+    name: body.name,
+    password: body.password,
+    gender: body.gender,
+    age: body.age,
+    degree: body.degree,
   };
   // Save Students in the database
-  Student.create(students)
+  Student.create(student)
     .then(data => {
       res.send(data);
     })
@@ -55,41 +58,28 @@ exports.findAll = (req, res) => {
     });
 };
 
+
+exports.findOne = (req, res) => {
+  const email = req.params.email;
+  return Student.findByPk(email)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Student with email=" + email
+      });
+    });
+};
+
+
+
 // Find a single Student with an id
 exports.findOne = (req, res) => {
   const email = req.params.email;
-
-
-  // return Tutorial.findByPk(tutorialId, { include: ["comments"] })
-  // .then((tutorial) => {
-  //   return tutorial;
-  // })
-  // .catch((err) => {
-  //   console.log(">> Error while finding tutorial: ", err);
-  // });
-
-  // Student.findByPk(email, { include: ["requests"] })
-  //   .then((data) => {
-  //     return data;
-  //   })
-  //   .catch((err) => {
-  //     res.status(500).send({
-  //       message: "Error retrieving Student with email=" + email
-  //     });
-  //   });
-
-  Student.findByPk(email)
-    .then(data => {
+  return Student.findByPk(email)
+    .then((data) => {
       res.send(data);
-      res.send(Requests.findByPk(email))
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error retrieving Requests with id=" + id
-        });
-      });
     })
     .catch(err => {
       res.status(500).send({
