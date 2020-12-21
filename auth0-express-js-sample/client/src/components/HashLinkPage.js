@@ -8,6 +8,7 @@ import Blog from "../components/Blog";
 import SignUp from "../components/SignUp";
 
 import HomeImage from "../data/img/home.jpg";
+import { Divider } from "@material-ui/core";
 
 const propTypes = {
   location: PropTypes.shape({
@@ -43,12 +44,10 @@ function HashLinkPage() {
         </div>
       </section>
       <section>
-        <Blog />
-        <h1>SUPPPP</h1>
         <SignUp />
       </section>
       <section id="section-two">
-        <ContentCard></ContentCard>
+        {/* <ContentCard></ContentCard> */}
       </section>
       <section
         style={objectAssign({ backgroundColor: "#C0C0C0" }, sectionStyle)}

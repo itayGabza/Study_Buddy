@@ -27,7 +27,8 @@ class BootstrapNavbar extends React.Component {
                                         activeClassName="router-link-exact-active" to={`/#feed`}>מציאת שותפים </Interactive>
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#section-two`}>הצוות</Interactive>
-
+<                                   Interactive as={HashLink} smooth className="nav-link"
+                                        activeClassName="router-link-exact-active" to={`/#SignUp`}>הירשם</Interactive>
                                     <NavLink
                                         to="/profile"
                                         exact

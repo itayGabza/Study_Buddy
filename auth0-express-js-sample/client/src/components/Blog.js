@@ -7,7 +7,7 @@ const Blog = () => {
   const [error, setError] = useState("");
   const backend_url = process.env.REACT_APP_BACKEND_URL;
 
-  useEffect(() => {
+ /*  useEffect(() => {
     axios
       .get(`${backend_url}/test`)
       .then((res) => {
@@ -18,19 +18,19 @@ const Blog = () => {
         setError(err.message);
         setLoad(true);
       });
-  }, [backend_url]);
+  }, [backend_url]); */
 
   if (load) {
     return (
       <ul>
         {error ? (
           <li>{error.message}</li>
-        ) : 
+        ) :
           /*   // {names.map((name, index) => (
             // <li key={index}>
             //  <h1>{name}</h1>
             // </li>} */
-            <div />
+          <div />
         }
       </ul>
     );
