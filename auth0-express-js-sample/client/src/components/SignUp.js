@@ -37,7 +37,7 @@ const SignUp = () => {
             <Row>
                 
                 <Col>
-                    <h3 className="fieldsHeads">שם משפחה</h3>
+                    <h3 className="fieldsHeads fieldsHeadsDots">שם משפחה</h3>
                     <Form.Control
                         type="text" 
                         name="lastName" 
@@ -50,7 +50,7 @@ const SignUp = () => {
                     {errors.lastName && <p className="errorMsg">{errors.lastName.message}</p>}
                 </Col>
                 <Col>
-                    <h3 className="fieldsHeads">שם פרטי</h3>
+                    <h3 className="fieldsHeads fieldsHeadsDots">שם פרטי</h3>
                     <Form.Control
                         type="text" 
                         name="firstName" 
@@ -84,9 +84,9 @@ const SignUp = () => {
                             name="gender" 
                             as="select" 
                             ref={register}>
+                            <option>לא מוגדר</option>
                             <option>נקבה</option>
                             <option>זכר</option>
-                            <option>לא מוגדר</option>
                             </Form.Control>
                         </Form.Group>
                     </span>
@@ -145,7 +145,7 @@ const SignUp = () => {
                 </Col>
 
                 <Col>
-                    <h3 className="fieldsHeads">טלפון</h3>
+                    <h3 className="fieldsHeads fieldsHeadsDots">טלפון</h3>
                     <Form.Control 
                     type="number"
                     name="phoneNumber"
@@ -162,7 +162,7 @@ const SignUp = () => {
                     {errors.phoneNumber && <p className="errorMsg">{errors.phoneNumber.message}</p>}
                 </Col>
                 <Col>
-                    <h3 className="fieldsHeads">אימייל</h3>
+                    <h3 className="fieldsHeads fieldsHeadsDots">אימייל</h3>
                     <Form.Control
                           type="text"
                           name="email"

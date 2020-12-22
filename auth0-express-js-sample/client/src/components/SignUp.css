@@ -32,9 +32,7 @@
   align-items: center;
 }
 
-.pictureUpload {
-    text-align: center;
-    display: flex;
-  justify-content: center;
-  align-items: center;
-}
+.fieldsHeadsDots::before {
+    content: "*";
+    color: red;
+  }
