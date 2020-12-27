@@ -28,10 +28,10 @@ db.requests = require("./requests.model.js")(sequelize, Sequelize);
 db.reqAv = require("./reqAv.model.js")(sequelize, Sequelize);
 db.studentCourses = require("./studentCourses.model.js")(sequelize, Sequelize);
 
-db.students.hasMany(db.requests, {as : "requests"});
+db.students.hasMany(db.requests, { as: "requests" });
 db.requests.belongsTo(db.students, {
-  foreignKey: "email",
-  as: "student",
+  foreignKey: "studentEmail",
+  as: "students",
 });
 
 

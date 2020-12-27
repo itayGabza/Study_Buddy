@@ -61,7 +61,7 @@ const Feed = () => {
       setForumCards([...forumCards, forumCard]);
     }} />,
     false
-);
+  );
 
   useEffect(() => {
     // const selectedDegree = degreesData[0];
@@ -97,12 +97,12 @@ const Feed = () => {
   );
 
 
-  return (isAuthenticated ?
+  return ( /*isAuthenticated ?*/
 
     <div className='feed'>
-          <Button variant="success" style={{ float: "center" }} onClick={toggleCardVisiblity}>Create New Request</Button>
+      <Button variant="success" style={{ float: "center" }} onClick={toggleCardVisiblity}>Create New Request</Button>
 
-     {ContactCardComponent}
+      {ContactCardComponent}
       {/* <DropDown
         degrees={degrees}
         courses={selectedDegree && selectedDegree.courses}
@@ -111,12 +111,11 @@ const Feed = () => {
         onDegreeSelectClick={handleDegreeSelectClick}
         onCourseSelectClick={handleCourseSelectClick}
       /> */}
-      <SearchComp/>
-      
-      <a>
-      <h4> סנן את החיפוש</h4>
-      </a>
-      <div >
+      <SearchComp />
+
+
+      <h4> Select Filters:</h4>
+      <div class="bigjumbo">
         <Jumbotron >
 
               <Filters changeStudyRequstQuery ={changeStudyRequstQuery} sentFromStudyRequest ={false}/>
@@ -125,8 +124,8 @@ const Feed = () => {
       <h4> תוצאות החיפוש:</h4>
       {backend_url.concat('/api/requests').concat(StudyRequstQery)}
       {compsToRender}
-    </div> :
-    <text className="feedText">Login to see the feed </text>)
+    </div> /*:
+    <text className="feedText">Login to see the feed </text>*/)
 };
 
 export default Feed

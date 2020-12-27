@@ -76,3 +76,16 @@ process.exit();
 // //   published: false,
 // // });
 // // end tryouts  ------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// query
+// studybudy.com/students => query = {}
+// studybudy.com/students?title=xyz => query = { title: xyz}
+// studybudy.com/students?title=xyz&firstName=yuval => query = { title: xyz, firstName: yuval}
+
+// params
+// in case ":name":
+// studybudy.com/students/yuval => params = { name: "yuval" }
+
+// body
+// studybudy.com/students

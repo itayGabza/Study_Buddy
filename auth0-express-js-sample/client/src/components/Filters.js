@@ -40,14 +40,11 @@ class Filters extends Component {
       
     };
   }
-
   comparer = (otherArray) => {
     return function (current) {
-
       return (
-        
         otherArray.filter(function (other) {
-          return other.value === current.value && other.value === current.value;
+          return other.value === current.value && other.label === current.label;
         }).length === 0
       );
     };
@@ -119,7 +116,6 @@ class Filters extends Component {
   };
   render() {
     const { values } = this.state;
-    
     return (
       <div>
         <Select
