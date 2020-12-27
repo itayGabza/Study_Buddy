@@ -15,7 +15,7 @@ const propTypes = {
   }).isRequired,
 };
 
-function HashLinkPage() {
+function HomePage() {
   const sectionStyle = {
     padding: "2.5vw 3.5vw 12vh 3.5vw",
     boxSizing: "border-box",
@@ -61,6 +61,6 @@ function HashLinkPage() {
   );
 }
 
-HashLinkPage.propTypes = propTypes;
+HomePage.propTypes = propTypes;
 
-export default HashLinkPage;
+export default HomePage;

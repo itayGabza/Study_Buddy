@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import { NavBar, Footer, Loading } from "./components";
 import {  Profile, ExternalApi } from "./views";
-import HashLinkPage from './components/HashLinkPage';
+import HomePage from './components/HomePage';
 import ContentCard from './views/ContentCard'
 
 import ProtectedRoute from "./auth/protected-route";
@@ -21,11 +21,12 @@ const App = () => {
   return (
     <div>
     <Route path="/test" exact component={ContentCard} />
+    <NavBar />
+
     <div id="app" class="container-fluid" >
-      <NavBar />
       <div >
         <Switch>
-          <Route path="/" exact component={HashLinkPage} />
+          <Route path="/" exact component={HomePage} />
           <ProtectedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/external-api" component={ExternalApi} />
         </Switch>

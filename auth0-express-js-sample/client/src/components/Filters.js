@@ -1,41 +1,43 @@
 import React, { Component } from "react";
-import chroma from "chroma-js";
 import Select from "react-select";
 import "./Filters.css";
 import colourStyles from "./FiltesStyle.js";
 // import { filter, findWhere,} from "underscore";
 import "bootstrap/dist/css/bootstrap.css";
 const options = [
-  { value: "homeWork", label: "שיעורי בית", column: "1", color:'red' },
-  { value: "test", label: "למידה למבחן", column: "1",color: 'red' },
-  { value: "other", label: "אחר", column: "1", color: 'red'  },
-  { value: "male", label: "גבר", column: "2", color: 'orange' },
-  { value: "female", label: "אישה", column: "2" , color:'orange'},
-  { value: "mix", label: "תביאו לי הכל מהכל", column: "2" , color:'orange'},
-  { value: "good", label: "טוב", column: "3" , color:'yellow'},
-  { value: "medium", label: "בינוני", column: "3", color:'yellow' },
-  { value: "bad", label: "מתקשה", column: "3" , color:'yellow'},
-  { value: "zoom", label: "זום", column: "4" , color: 'green'},
-  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green' },
-  { value: "morning", label: "בבוקר", column: "5",color: 'lime' },
-  { value: "noon", label: "בצהריים", column: "5" ,color: 'lime'},
-  { value: "afterNoon", label: "אחר הצהריים", column: "5",color: 'lime' },
-  { value: "Evening", label: "בערב", column: "5",color: 'lime' },
-  { value: "2", label: "2", column: "6" , color: 'olivedrab'},
-  { value: "3", label: "3", column: "6" , color: 'olivedrab'},
-  { value: "4", label: "4", column: "6" , color: 'olivedrab'},
-  { value: "5Plus", label: "5+", column: "6" , color: 'olivedrab'}
+  { value: "homeWork", label: "שיעורי בית", column: "1", color:'red',query: 'objective' },
+  { value: "test", label: "למידה למבחן", column: "1",color: 'red',query: 'objective' },
+  { value: "other", label: "אחר", column: "1", color: 'red',query: 'objective'  },
+  { value: "male", label: "גבר", column: "2", color: 'orange', query: 'gender' },
+  { value: "female", label: "אישה", column: "2" , color:'orange', query: 'gender'},
+  { value: "mix", label: "תביאו לי הכל מהכל", column: "2" , color:'orange', query: 'gender'},
+  { value: "good", label: "טוב", column: "3" , color:'yellow',query: 'level'},
+  { value: "medium", label: "בינוני", column: "3", color:'yellow' ,query: 'level'},
+  { value: "bad", label: "מתקשה", column: "3" , color:'yellow',query: 'level'},
+  { value: "zoom", label: "זום", column: "4" , color: 'green',query: 'where'},
+  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green',query: 'where' },
+  { value: "morning", label: "בבוקר", column: "5",color: 'lime',query: 'when' },
+  { value: "noon", label: "בצהריים", column: "5" ,color: 'lime',query: 'when'},
+  { value: "afterNoon", label: "אחר הצהריים", column: "5",color: 'lime',query: 'when' },
+  { value: "Evening", label: "בערב", column: "5",color: 'lime',query: 'when' },
+  { value: "2", label: "2", column: "6" , color: 'olivedrab', query: 'size'},
+  { value: "3", label: "3", column: "6" , color: 'olivedrab', query: 'size'},
+  { value: "4", label: "4", column: "6" , color: 'olivedrab', query: 'size'},
+  { value: "5Plus", label: "5+", column: "6" , color: 'olivedrab', query: 'size'}
 ];
 
 class Filters extends Component {
   constructor(props) {
     super(props);
     this.columnsToDisplay = this.columnsToDisplay.bind(this);
+    this.changeStudyRequstQuery = this.props.changeStudyRequstQuery;
+    this.sentFromStudyRequest = this.props.sentFromStudyRequest;
 
     this.state = {
       columnsToRender: [true, true, true, true, true, true], // change to amount of columns
       values: [],
       buttonsToRender: options
+      
     };
   }
 
@@ -74,7 +76,6 @@ class Filters extends Component {
         columnsToRenderLocal.push(true);
       }
     }
-    console.log("cols", columnsToRenderLocal);
     this.setState({
       columnsToRender: columnsToRenderLocal
     });
@@ -86,16 +87,39 @@ class Filters extends Component {
       buttonsToRender: options.filter(this.comparer(values))
     });
     this.columnsToDisplay(options, options.filter(this.comparer(values)));
+    
+    this.getFilters(values);
+  
+
   };
+  getFilters = (values) => {
+    var str = [];
+    for (var i = 0; i < values.length; ++i){
+        console.log(values[i])
+        str.push(values[i]['query'] + "=" + values[i]['value']);
+      }
+      var query = str.join("&")
+      if (!this.sentFromStudyRequest){
+      if (query!==''){
+        this.changeStudyRequstQuery('?'.concat(query)) 
+      }
+      else{
+        this.changeStudyRequstQuery('') 
+      }
+    }
+  }
+
 
   addToList = (value) => {
     this.setState({
       values: [...this.state.values, value]
     });
     this.handleChange([...this.state.values, value]);
+
   };
   render() {
     const { values } = this.state;
+    
     return (
       <div>
         <Select

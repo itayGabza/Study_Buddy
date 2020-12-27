@@ -36,7 +36,7 @@ const NewRequest = (props) => {
 
           <p>
             <div class="jumbo">
-              <Filters />
+              <Filters sentFromStudyRequest = {true} />
             </div>
           </p>
         </Jumbotron>

@@ -14,6 +14,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/ForumCard.css';
 import '../components/jumbo.css';
 import useVisiblityToggler from '../hooks/useVisiblityToggler'
+const backend_url = process.env.REACT_APP_BACKEND_URL;
+
 export class FormCard {
   constructor(title, objective, gender, level, location, studyingTime, groupSize) {
     this.title = title;
@@ -48,6 +50,7 @@ const formCardsData = [
 
 
 const Feed = () => {
+  const [StudyRequstQery,setStudyRequstQuery] =useState('')
   const { isAuthenticated } = useAuth0();
   const [selectedDegree, setSelectedDegree] = useState(degreesData[0])
   const [selectedCourse, setSelectedCourse] = useState(null)
@@ -72,7 +75,10 @@ const Feed = () => {
       setSelectedCourse(selectedCourse);
     }
   };
+  const changeStudyRequstQuery = (r) =>{
+    setStudyRequstQuery(r);
 
+  }
   const handleDegreeSelectClick = (e) => {
     // const name = getAttributeName(e, 'text');
     const name = e.target.text;
@@ -113,12 +119,11 @@ const Feed = () => {
       <div >
         <Jumbotron >
 
-          <p>
-              <Filters />
-          </p>
+              <Filters changeStudyRequstQuery ={changeStudyRequstQuery} sentFromStudyRequest ={false}/>
         </Jumbotron>
       </div>
       <h4> תוצאות החיפוש:</h4>
+      {backend_url.concat('/api/requests').concat(StudyRequstQery)}
       {compsToRender}
     </div> :
     <text className="feedText">Login to see the feed </text>)
