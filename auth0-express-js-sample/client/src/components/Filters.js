@@ -136,7 +136,7 @@ class Filters extends Component {
         </div> */}
 
         <div class="container" className="gridDesign">
-          <div class="row " className="rowFilter">
+          <div class="row " className={this.sentFromStudyRequest ? 'rowFilterPost':'rowFilter' }>
             {this.state.columnsToRender[0] === true ? (
               <div class="col-sm-2">
                 <a>{"סוג"}</a>

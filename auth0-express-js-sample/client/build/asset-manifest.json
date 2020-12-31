@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.9e8c97d0.chunk.css",
-    "main.js": "./static/js/main.31d86da1.chunk.js",
-    "main.js.map": "./static/js/main.31d86da1.chunk.js.map",
+    "main.css": "./static/css/main.63c15d82.chunk.css",
+    "main.js": "./static/js/main.c3f9b4a0.chunk.js",
+    "main.js.map": "./static/js/main.c3f9b4a0.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.8782c25d.js",
     "runtime-main.js.map": "./static/js/runtime-main.8782c25d.js.map",
-    "static/css/2.7273f9a9.chunk.css": "./static/css/2.7273f9a9.chunk.css",
-    "static/js/2.e39f733c.chunk.js": "./static/js/2.e39f733c.chunk.js",
-    "static/js/2.e39f733c.chunk.js.map": "./static/js/2.e39f733c.chunk.js.map",
+    "static/css/2.5fbb335b.chunk.css": "./static/css/2.5fbb335b.chunk.css",
+    "static/js/2.c07e947c.chunk.js": "./static/js/2.c07e947c.chunk.js",
+    "static/js/2.c07e947c.chunk.js.map": "./static/js/2.c07e947c.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.d42efcec76c8d33e166ea5986ec77fc3.js": "./precache-manifest.d42efcec76c8d33e166ea5986ec77fc3.js",
+    "precache-manifest.f85f7880ae58fea758bbbcbb0cb356d3.js": "./precache-manifest.f85f7880ae58fea758bbbcbb0cb356d3.js",
     "service-worker.js": "./service-worker.js",
-    "static/css/2.7273f9a9.chunk.css.map": "./static/css/2.7273f9a9.chunk.css.map",
-    "static/css/main.9e8c97d0.chunk.css.map": "./static/css/main.9e8c97d0.chunk.css.map",
-    "static/js/2.e39f733c.chunk.js.LICENSE.txt": "./static/js/2.e39f733c.chunk.js.LICENSE.txt",
+    "static/css/2.5fbb335b.chunk.css.map": "./static/css/2.5fbb335b.chunk.css.map",
+    "static/css/main.63c15d82.chunk.css.map": "./static/css/main.63c15d82.chunk.css.map",
+    "static/js/2.c07e947c.chunk.js.LICENSE.txt": "./static/js/2.c07e947c.chunk.js.LICENSE.txt",
     "static/media/Daniel.jpeg": "./static/media/Daniel.f2b7457f.jpeg",
     "static/media/bootstrap.min.css": "./static/media/glyphicons-halflings-regular.fa277232.woff",
     "static/media/home.jpg": "./static/media/home.90bad61a.jpg",
@@ -21,9 +21,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8782c25d.js",
-    "static/css/2.7273f9a9.chunk.css",
-    "static/js/2.e39f733c.chunk.js",
-    "static/css/main.9e8c97d0.chunk.css",
-    "static/js/main.31d86da1.chunk.js"
+    "static/css/2.5fbb335b.chunk.css",
+    "static/js/2.c07e947c.chunk.js",
+    "static/css/main.63c15d82.chunk.css",
+    "static/js/main.c3f9b4a0.chunk.js"
   ]
 }
