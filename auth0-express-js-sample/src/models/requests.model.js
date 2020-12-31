@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
     studyGender: {
       type: Sequelize.STRING
     },
-  });
+  }, { timestamps: false });
   // Requests.removeAttribute('id');
   return Requests;
 };

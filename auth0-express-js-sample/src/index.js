@@ -31,9 +31,9 @@ require("./routes/requests.routes.js")(app);
 // require("./routes/studentCourses.routes.js")(app);   //TODO
 
 const db = require("./models/db.js");
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 app.get("/test", (req, res) => {
   res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);

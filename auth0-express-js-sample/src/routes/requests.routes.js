@@ -10,14 +10,17 @@ module.exports = app => {
   // Retrieve all requests
   router.get("/findall", requests.findAll);
 
-  // Retrieve a single requests with id
-  //router.get("/:email", requests.findOne);  //TODO filter requests by what?
-
-  //find all requests by a student
-  router.get("/:email", requests.findAllByStudent);  //TODO filter requests by what?
-
+  //filters the requests
   router.get("/filters", requests.filters);  //TODO filter requests by what?
 
 
-  app.use('/api/requests', router);
+  // Retrieve a single requests with id
+  //router.get("/:email", requests.findOne);  //TODO filter requests by what?
+
+  // find all requests by a student
+  router.get("/:email", requests.findAllByStudent);  //TODO filter requests by what?
+
+
+
+  app.use('/api/studyRequests', router);
 };
