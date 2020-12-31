@@ -2,6 +2,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
+
 import './Feed.scss'
 import ForumCard from '../components/ForumCard';
 // import DropDown from '../components/DropDown';
@@ -9,6 +11,7 @@ import SearchComp from '../components/Search/SearchComp';
 
 import Filters from '../components/Filters';
 import NewRequest from '../components/NewRequest';
+import Loading  from "../components/loading";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/ForumCard.css';
@@ -16,83 +19,69 @@ import '../components/jumbo.css';
 import useVisiblityToggler from '../hooks/useVisiblityToggler'
 const backend_url = process.env.REACT_APP_BACKEND_URL;
 
-export class FormCard {
-  constructor(title, objective, gender, level, location, studyingTime, groupSize) {
-    this.title = title;
-    this.objective = objective;
-    this.gender = gender;
-    this.level = level;
-    this.location = location;
-    this.studyingTime = studyingTime;
-    this.groupSize = groupSize;
-  }
-}
-class Degree {
-  constructor(name, courses) {
-    this.name = name;
-    this.courses = courses;
-  }
-}
-
-const degreesData = [
-  new Degree("Industrial Engineering and Management", ['Culculus', 'Economics', 'Linear Regression', 'Object Oriented Programming', 'Statistics']),
-  new Degree("Computer Science", ['Intro to CS', 'Linear Algebra', 'Linear Algebra2', 'Culculus2', 'SPL']),
-  new Degree("Physics", ['Math-For-Physicens', 'Physics1 ', 'Physics2', 'Thermodynamics', 'Statics'])
-];
 
 
-const formCardsData = [
-  new FormCard("Home Assignment 3", "Home Work", "Male", "Good", "Zoom", "Morning", "4"),
-  new FormCard("Home Assignment 6", "Home Work", "Good", "3"),
-  new FormCard("Studying for final exam", "Exam preperation", "Good", "2")
-];
+
+
+const formCardsData = [];
+// new FormCard("Home Assignment 3", "Home Work", "Male", "Good", "Zoom", "Morning", "4"),
+// new FormCard("Home Assignment 6", "Home Work", "Good", "3"),
+// new FormCard("Studying for final exam", "Exam preperation", "Good", "2")
 
 
 
 const Feed = () => {
-  const [StudyRequstQery,setStudyRequstQuery] =useState('')
+  const [StudyRequstQery, setStudyRequstQuery] = useState('')
   const { isAuthenticated } = useAuth0();
-  const [selectedDegree, setSelectedDegree] = useState(degreesData[0])
   const [selectedCourse, setSelectedCourse] = useState(null)
-  const [degrees, setDegrees] = useState(degreesData);
   const [forumCards, setForumCards] = useState(formCardsData);
+  const [studyRequest, setStudyRequest] = useState();
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [ContactCardComponent, toggleCardVisiblity] = useVisiblityToggler(
+    <Jumbotron >
     <NewRequest addToList={forumCard => {
-      setForumCards([...forumCards, forumCard]);
-    }} />,
+      setStudyRequest([...forumCards, forumCard]);
+    }} />
+    </Jumbotron >,
     false
   );
 
-  useEffect(() => {
-    // const selectedDegree = degreesData[0];
-    // setSelectedDegree(degreesData[0]);
-  }, [])
-  const handleCourseSelectClick = (e) => {
-    const name = e.target.text;
-    if (name) {
+  const HandleStudyRequests = (data) => {
+    console.log("data", data)
+    const studyRequestsToRender = data.map(formCard =>
 
-      const selectedCourse = selectedDegree.courses.find(c => c === name);
-      setSelectedCourse(selectedCourse);
-    }
-  };
-  const changeStudyRequstQuery = (r) =>{
+      <ForumCard {...formCard} />
+
+    );
+    setForumCards(studyRequestsToRender)
+  }
+
+
+  useEffect(() => {
+    console.log(backend_url.concat('/api/studyRequests').concat(StudyRequstQery))
+    axios
+      .get(`${backend_url}`.concat('/api/studyRequests').concat(StudyRequstQery))
+      .then((res) => {
+        HandleStudyRequests(res.data)
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [StudyRequstQery]);// useEffect apply when StudyRequstQery change. 
+
+  const changeStudyRequstQuery = (r) => {
     setStudyRequstQuery(r);
 
   }
-  const handleDegreeSelectClick = (e) => {
-    // const name = getAttributeName(e, 'text');
-    const name = e.target.text;
-    if (name) {
 
-      const selectedDegree = degrees.find(c => c.name === name);
-      setSelectedDegree(selectedDegree);
-      setSelectedCourse(selectedDegree.courses[0]);
-
-
-    }
-  };
 
   const compsToRender = forumCards.map(formCard =>
+
     <ForumCard {...formCard} />
   );
 
@@ -100,7 +89,7 @@ const Feed = () => {
   return ( /*isAuthenticated ?*/
 
     <div className='feed'>
-      <Button variant="success" style={{ float: "center" }} onClick={toggleCardVisiblity}>Create New Request</Button>
+      <Button variant="success" style={{ float: "center" }} onClick={toggleCardVisiblity}> בקשת למידה חדשה</Button>
 
       {ContactCardComponent}
       {/* <DropDown
@@ -118,13 +107,19 @@ const Feed = () => {
       <div class="bigjumbo">
         <Jumbotron >
 
-              <Filters changeStudyRequstQuery ={changeStudyRequstQuery} sentFromStudyRequest ={false}/>
+          <Filters changeStudyRequstQuery={changeStudyRequstQuery} sentFromStudyRequest={false} />
         </Jumbotron>
       </div>
-      <h4> תוצאות החיפוש:</h4>
-      {backend_url.concat('/api/requests').concat(StudyRequstQery)}
-      {compsToRender}
+
+      {loading === true ?
+        (<Loading/>)
+      :(<div>
+            <h4> תוצאות החיפוש: {forumCards.length}</h4>
+            {forumCards}
+          </div>)
+      }
     </div> /*:
+    
     <text className="feedText">Login to see the feed </text>*/)
 };
 

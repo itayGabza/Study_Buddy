@@ -5,22 +5,48 @@ import Button from 'react-bootstrap/Button';
 import './ForumCard.css';
 import Badge from 'react-bootstrap/Badge';
 
+
+
 const ForumCard = (props) => {
+
+    const checkLevel = (level) =>{
+        if (level==="good") {
+            return "success"
+        } else if (level ==="medium"){
+            return "warning"
+        }
+        else {
+            return "danger"
+        }
+    }
     return (
         <div class="cardEdit">
-        <Card >
+        {console.log(props)}
+        {/* 
+        The names of the props are according to the backend data. 
+        Change the names after updating the backend. 
+        */}
+        <Card className="bootstrapCard" >
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
                 <Card.Title>
-                <Badge variant="secondary">{props.objective}</Badge>{' '}
+                <Badge variant="secondary">{props.studyingFor}</Badge>{' '}
                 </Card.Title>
                 <Card.Text>
-                    <Badge variant="primary">{props.gender}</Badge>{' '}
-                    <Badge variant="info">{props.level}</Badge>{' '}
-                    <Badge variant="success">{props.location}</Badge>{' '}
-                    <Badge variant="danger">{props.studyingTime}</Badge>{' '}
+                  
+                    <Badge variant={props.studyGender=="male"?"male":"female"}>{props.studyGender}</Badge>{' '}
+                    <Badge variant={checkLevel(props.studyLevel)}>{props.studyLevel}</Badge>{' '}
+                    <Badge variant={props.studyMethod=="zoom"?"success":"frontal"}>{props.studyMethod}</Badge>{' '}
+                    <Badge variant="success">{props.studyTime}</Badge>{' '}
                     <Badge variant="warning">{props.groupSize}</Badge>{' '}  
-                    <Badge variant="warning"></Badge>{' '}        
+                    <Badge variant="warning"></Badge>{' '} 
+                    <br></br>
+                      מחפש ללמוד בכיף עם בירה בסוף
+                    מחפש ללמוד בכיף עם בירה בסוף
+                    מחפש ללמוד בכיף עם בירה בסוף
+                    מחפש ללמוד בכיף עם בירה בסוף
+                    מחפש ללמוד בכיף עם בירה בסוף
+
                  </Card.Text>
                 <Button variant="primary">Contact info</Button>
             </Card.Body>

@@ -14,8 +14,8 @@ const options = [
   { value: "good", label: "טוב", column: "3" , color:'yellow',query: 'level'},
   { value: "medium", label: "בינוני", column: "3", color:'yellow' ,query: 'level'},
   { value: "bad", label: "מתקשה", column: "3" , color:'yellow',query: 'level'},
-  { value: "zoom", label: "זום", column: "4" , color: 'green',query: 'where'},
-  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green',query: 'where' },
+  { value: "zoom", label: "זום", column: "4" , color: 'green',query: 'location'},
+  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green',query: 'location' },
   { value: "morning", label: "בבוקר", column: "5",color: 'lime',query: 'when' },
   { value: "noon", label: "בצהריים", column: "5" ,color: 'lime',query: 'when'},
   { value: "afterNoon", label: "אחר הצהריים", column: "5",color: 'lime',query: 'when' },
@@ -98,7 +98,7 @@ class Filters extends Component {
       var query = str.join("&")
       if (!this.sentFromStudyRequest){
       if (query!==''){
-        this.changeStudyRequstQuery('?'.concat(query)) 
+        this.changeStudyRequstQuery('/filters?'.concat(query)) 
       }
       else{
         this.changeStudyRequstQuery('') 

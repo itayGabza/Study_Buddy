@@ -1,7 +1,40 @@
 .cardEdit {
-    width: 75%;
+    width: 50%;
     margin: 20px;
+    border-radius: 10px;
+    border: none;
 }
+.badge-male{
+    background-color: #002bff;
+    color:white;
+}
+.badge-female{
+    background-color: #dc35a1;
+    color: white;
+}
+.badge-frontal{
+    
+    background-color: #69d38a;
+    color: white;
+}
+
+.card-body {
+    background-color: rgb(234 237 239);
+    border: outset;
+    box-shadow: 1px 2px;
+    border-radius: 10px;
+}
+
+@media all and (max-width: 600px) {
+    .cardEdit {
+    width: 90%;
+    margin: 10px;
+  }
+}
+.bootstrapCard{
+    border-radius: 50px;
+}
+
 /* 
 .blocks {
     

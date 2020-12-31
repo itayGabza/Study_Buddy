@@ -8,7 +8,7 @@ module.exports = app => {
   router.post("/create", requests.create);
 
   // Retrieve all requests
-  router.get("/findall", requests.findAll);
+  router.get("/", requests.findAll);
 
   //filters the requests
   router.get("/filters", requests.filters);  //TODO filter requests by what?
