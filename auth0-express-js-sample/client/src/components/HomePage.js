@@ -8,6 +8,7 @@ import Blog from "../components/Blog";
 import SignUp from "../components/SignUp";
 
 import HomeImage from "../data/img/home.jpg";
+import HomeImage2 from "../data/img/students_studying.jpg";
 
 const propTypes = {
   location: PropTypes.shape({
@@ -29,7 +30,7 @@ function HomePage() {
     <div>
       <div id="section-one">
         {/* <section style={objectAssign({},)} id="section-one"> */}
-        <img src={HomeImage} className="responsie_img" alt=""></img>
+        <img src={HomeImage2} className="responsie_img" alt=""></img>
       </div>
       {/* </section> */}
       <section id="post">
