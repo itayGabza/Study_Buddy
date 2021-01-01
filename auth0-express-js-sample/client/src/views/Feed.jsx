@@ -16,8 +16,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/ForumCard.css';
 import '../components/jumbo.css';
-import useVisiblityToggler from '../hooks/useVisiblityToggler'
-const backend_url = process.env.REACT_APP_BACKEND_URL;
+const backend_url = process.env.REACT_APP_SERVER_URL;
 
 
 
@@ -39,14 +38,7 @@ const Feed = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [ContactCardComponent, toggleCardVisiblity] = useVisiblityToggler(
-    <Jumbotron >
-    <NewRequest addToList={forumCard => {
-      setStudyRequest([...forumCards, forumCard]);
-    }} />
-    </Jumbotron >,
-    false
-  );
+
 
   const HandleStudyRequests = (data) => {
     console.log("data", data)
@@ -89,9 +81,9 @@ const Feed = () => {
   return ( /*isAuthenticated ?*/
 
     <div className='feed'>
-      <Button variant="success" style={{ float: "center" }} onClick={toggleCardVisiblity}> בקשת למידה חדשה</Button>
+     
 
-      {ContactCardComponent}
+      <NewRequest/>
       {/* <DropDown
         degrees={degrees}
         courses={selectedDegree && selectedDegree.courses}
