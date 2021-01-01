@@ -71,7 +71,7 @@ a{
 }
 
 .responsie_img{
-  max-width: 73%;
+  max-width: 60%;
   height: auto;
   margin-right: auto;
   margin-left: auto;
@@ -94,4 +94,9 @@ a{
       margin: 1.5em 0 0 0;
       padding: 1.5em 2.5rem;
   }
+  .responsie_img{
+    max-width: 90%;
+    height: auto;
+  }
+
 }
