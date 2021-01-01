@@ -17,26 +17,31 @@ class BootstrapNavbar extends React.Component {
                             <Navbar.Brand href={`/#section-one`}>Study buddy</Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="mr-auto">
+                                <Nav class ="ml-auto navbar-nav" className="ml-auto">
+                                    <NavLink
+                                        to="/auth0"
+                                        className="nav-link"
+                                    >
+                                            התחבר     
+                                    </NavLink>
                                     {/* <Interactive className="ml-auto" as={HashLink} smooth className="nav-link" */}
-                                    <Interactive as={HashLink} smooth className="nav-link"
-                                        activeClassName="router-link-exact-active" to={`/#section-one`}>בית </Interactive>
+                                    {/* <Interactive as={HashLink} smooth className="nav-link"
+                                        activeClassName="router-link-exact-active" to={`/#section-one`}>בית </Interactive> */}
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#post`}>פרסום פוסט </Interactive>
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#feed`}>מציאת שותפים </Interactive>
                                     <Interactive as={HashLink} smooth className="nav-link"
                                         activeClassName="router-link-exact-active" to={`/#section-two`}>הצוות</Interactive>
-
                                     <NavLink
                                         to="/profile"
                                         exact
                                         className="nav-link"
                                         activeClassName="router-link-exact-active"
                                     >
-
                                         פרופיל
-    </NavLink>
+                                    </NavLink>
+
                                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -44,9 +49,15 @@ class BootstrapNavbar extends React.Component {
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                                     </NavDropdown> */}
-                                </Nav>
-                                </Navbar.Collapse>
-                                    <AuthNav />
+                                </Nav >
+
+
+
+                                
+                            </Navbar.Collapse>
+                            {/* <AuthNav /> */}
+                                   
+                                
                             
                         </Navbar>
                         <br />
