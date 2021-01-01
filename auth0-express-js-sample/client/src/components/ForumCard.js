@@ -21,7 +21,7 @@ const ForumCard = (props) => {
     }
 
     const checkStudyingFor = (studyingFor) =>{
-        if (studyingFor=="test") {
+        if (studyingFor=="exam") {
             return "למידה למבחן"
         } else if (studyingFor =="other"){
             return "אחר"

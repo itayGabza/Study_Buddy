@@ -1,7 +1,6 @@
 
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
-import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
 import './Feed.scss'
@@ -105,7 +104,7 @@ const Feed = () => {
       </div>
 
       {loading === true ?
-        (<Loading/>)
+        (<Loading/>)  
       :(<div>
             <h4> תוצאות החיפוש: {forumCards.length}</h4>
             {forumCards}
