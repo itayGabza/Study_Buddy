@@ -5,25 +5,25 @@ import colourStyles from "./FiltesStyle.js";
 // import { filter, findWhere,} from "underscore";
 import "bootstrap/dist/css/bootstrap.css";
 const options = [
-  { value: "homeWork", label: "שיעורי בית", column: "1", color:'red',query: 'objective' },
-  { value: "test", label: "למידה למבחן", column: "1",color: 'red',query: 'objective' },
-  { value: "other", label: "אחר", column: "1", color: 'red',query: 'objective'  },
+  { value: "homeWork", label: "שיעורי בית", column: "1", color: 'red', query: 'objective' },
+  { value: "test", label: "למידה למבחן", column: "1", color: 'red', query: 'objective' },
+  { value: "other", label: "אחר", column: "1", color: 'red', query: 'objective' },
   { value: "male", label: "גבר", column: "2", color: 'orange', query: 'gender' },
-  { value: "female", label: "אישה", column: "2" , color:'orange', query: 'gender'},
-  { value: "mix", label: "תביאו לי הכל מהכל", column: "2" , color:'orange', query: 'gender'},
-  { value: "good", label: "טוב", column: "3" , color:'yellow',query: 'level'},
-  { value: "medium", label: "בינוני", column: "3", color:'yellow' ,query: 'level'},
-  { value: "bad", label: "מתקשה", column: "3" , color:'yellow',query: 'level'},
-  { value: "zoom", label: "זום", column: "4" , color: 'green',query: 'location'},
-  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green',query: 'location' },
-  { value: "morning", label: "בבוקר", column: "5",color: 'lime',query: 'when' },
-  { value: "noon", label: "בצהריים", column: "5" ,color: 'lime',query: 'when'},
-  { value: "afterNoon", label: "אחר הצהריים", column: "5",color: 'lime',query: 'when' },
-  { value: "Evening", label: "בערב", column: "5",color: 'lime',query: 'when' },
-  { value: "2", label: "2", column: "6" , color: 'olivedrab', query: 'size'},
-  { value: "3", label: "3", column: "6" , color: 'olivedrab', query: 'size'},
-  { value: "4", label: "4", column: "6" , color: 'olivedrab', query: 'size'},
-  { value: "5Plus", label: "5+", column: "6" , color: 'olivedrab', query: 'size'}
+  { value: "female", label: "אישה", column: "2", color: 'orange', query: 'gender' },
+  { value: "mix", label: "תביאו לי הכל מהכל", column: "2", color: 'orange', query: 'gender' },
+  { value: "good", label: "טוב", column: "3", color: 'yellow', query: 'level' },
+  { value: "medium", label: "בינוני", column: "3", color: 'yellow', query: 'level' },
+  { value: "bad", label: "מתקשה", column: "3", color: 'yellow', query: 'level' },
+  { value: "zoom", label: "זום", column: "4", color: 'green', query: 'location' },
+  { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green', query: 'location' },
+  { value: "morning", label: "בבוקר", column: "5", color: 'lime', query: 'when' },
+  { value: "noon", label: "בצהריים", column: "5", color: 'lime', query: 'when' },
+  { value: "afterNoon", label: "אחר הצהריים", column: "5", color: 'lime', query: 'when' },
+  { value: "Evening", label: "בערב", column: "5", color: 'lime', query: 'when' },
+  { value: "2", label: "2", column: "6", color: 'olivedrab', query: 'size' },
+  { value: "3", label: "3", column: "6", color: 'olivedrab', query: 'size' },
+  { value: "4", label: "4", column: "6", color: 'olivedrab', query: 'size' },
+  { value: "5Plus", label: "5+", column: "6", color: 'olivedrab', query: 'size' }
 ];
 
 class Filters extends Component {
@@ -37,7 +37,7 @@ class Filters extends Component {
       columnsToRender: [true, true, true, true, true, true], // change to amount of columns
       values: [],
       buttonsToRender: options
-      
+
     };
   }
   comparer = (otherArray) => {
@@ -84,25 +84,28 @@ class Filters extends Component {
       buttonsToRender: options.filter(this.comparer(values))
     });
     this.columnsToDisplay(options, options.filter(this.comparer(values)));
-    
+
     this.getFilters(values);
-  
+
 
   };
   getFilters = (values) => {
     var str = [];
-    for (var i = 0; i < values.length; ++i){
-        console.log(values[i])
-        str.push(values[i]['query'] + "=" + values[i]['value']);
+    for (var i = 0; i < values.length; ++i) {
+      console.log(values[i])
+      str.push(values[i]['query'] + "=" + values[i]['value']);
+    }
+    var query = str.join("&")
+    if (!this.sentFromStudyRequest) {
+      if (query !== '') {
+        this.changeStudyRequstQuery('/filters?'.concat(query))
       }
-      var query = str.join("&")
-      if (!this.sentFromStudyRequest){
-      if (query!==''){
-        this.changeStudyRequstQuery('/filters?'.concat(query)) 
+      else {
+        this.changeStudyRequstQuery('')
       }
-      else{
-        this.changeStudyRequstQuery('') 
-      }
+    }
+    else{
+      this.changeStudyRequstQuery(query)
     }
   }
 
@@ -136,7 +139,7 @@ class Filters extends Component {
         </div> */}
 
         <div class="container" className="gridDesign">
-          <div class="row " className={this.sentFromStudyRequest ? 'rowFilterPost':'rowFilter' }>
+          <div class="row " className={this.sentFromStudyRequest ? 'rowFilterPost' : 'rowFilter'}>
             {this.state.columnsToRender[0] === true ? (
               <div class="col-sm-2">
                 <a>{"סוג"}</a>
@@ -148,8 +151,8 @@ class Filters extends Component {
                       </button>
                     </div>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 )}
               </div>
             ) : null}
@@ -164,8 +167,8 @@ class Filters extends Component {
                       </button>
                     </div>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 )}
               </div>
             ) : null}
@@ -180,8 +183,8 @@ class Filters extends Component {
                       </button>
                     </div>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 )}
               </div>
             ) : null}
@@ -196,8 +199,8 @@ class Filters extends Component {
                       </button>
                     </div>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 )}
               </div>
             ) : null}
@@ -212,8 +215,8 @@ class Filters extends Component {
                       </button>
                     </div>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 )}
               </div>
             ) : null}
@@ -228,8 +231,8 @@ class Filters extends Component {
                       </button>
                     </div>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 )}
               </div>
             ) : null}

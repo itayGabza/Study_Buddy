@@ -13,18 +13,18 @@
     margin: -1rem -1rem -1rem auto;
   }
   .ButtonW {
-    background-color: transparent;
-    color: grey;
+    background-color: transparent !important;
+    color: grey !important;
     width: 50% !important;
-    margin-left: 10%;
-    margin-top: 2%;
-    text-align: right;
-    border-radius: 20px;
+    margin-left: 10% !important;
+    margin-top: 2% !important;
+    text-align: right !important;
+    border-radius: 20px !important;
   }
   .ButtonW:hover {
-    background-color: transparent;
-    color: grey;
-    cursor: text;
+    background-color: transparent !important;
+    color: grey !important;
+    cursor: text !important;
   }
   .Headline {
     background-color: transparent;

@@ -68,7 +68,6 @@ const Feed = () => {
 
   const changeStudyRequstQuery = (r) => {
     setStudyRequstQuery(r);
-
   }
 
 
@@ -92,10 +91,12 @@ const Feed = () => {
         onDegreeSelectClick={handleDegreeSelectClick}
         onCourseSelectClick={handleCourseSelectClick}
       /> */}
-      <SearchComp />
+                      <br />
+
+      {/* <SearchComp /> */}
 
 
-      <h4> Select Filters:</h4>
+      <h4> סינון תוצאות</h4>
       <div class="bigjumbo">
         <Jumbotron >
 

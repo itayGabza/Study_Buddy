@@ -5,8 +5,21 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 import "./NewRequest.css";
+import Filters from "./Filters";
 
 class MyVerticallyCenteredModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filters:''
+      
+    };
+  }
+  submitFilters = (filters) =>{
+  this.setState({
+    filters:filters}
+  )
+  }
   render() {
     return (
       <Modal
@@ -39,6 +52,9 @@ class MyVerticallyCenteredModal extends React.Component {
                 />
                 <br />
                 <br />
+                <h4> הוספת סינונים</h4>
+                <Filters sentFromStudyRequest={true} changeStudyRequstQuery={this.submitFilters} />
+                {console.log('filters',this.state.filters)}
               </Form.Group>
             </div>
           </div>
@@ -71,9 +87,9 @@ class NewRequest extends React.Component {
         <Button
           variant="primary"
           onClick={() => this.setState({ modalShow: true })}
-          class="ButtonW"
+          className="ButtonW"
         >
-          פרסם פוסט
+          פרסם\פרסמי בקשת למידה
         </Button>
         <MyVerticallyCenteredModal
           show={this.state.modalShow}
