@@ -76,17 +76,17 @@ const ForumCard = (props) => {
                     <Badge variant={checkLevel(props.studyLevel)}>{checkLevelname(props.studyLevel)}</Badge>{' '}
                     <Badge variant={props.studyMethod=="zoom"?"success":"frontal"}>{props.studyMethod=="zoom"?"פרונטלי":"זום"}</Badge>{' '}
                     <Badge variant="success">{checkTimeName(props.studyTime)}</Badge>{' '}
-                    <Badge variant="warning">{props.groupSize}</Badge>{' '}  
+                    <Badge variant="warning">{props.groupSize <= 4 ? props.groupSize: "+5"  }</Badge>{' '}  
                     <Badge variant="warning"></Badge>{' '} 
                     <br></br>
-                      מחפש ללמוד בכיף עם בירה בסוף
+                      מחפש !!!!!ללמוד בכיף עם בירה בסוף
                     מחפש ללמוד בכיף עם בירה בסוף
                     מחפש ללמוד בכיף עם בירה בסוף
                     מחפש ללמוד בכיף עם בירה בסוף
                     מחפש ללמוד בכיף עם בירה בסוף
 
                  </Card.Text>
-                <Button variant="primary">פרטים ליצירת קשר</Button>
+                <Button variant="primary" >פרטים ליצירת קשר</Button>
             </Card.Body>
         </Card>
         </div>

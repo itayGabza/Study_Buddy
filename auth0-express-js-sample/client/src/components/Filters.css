@@ -19,6 +19,9 @@ button {
   color: #1f84e0;
   background: none;
   border: none;
+
+  /* this line was missing */
+  text-align: right; 
 }
 button:hover {
   color: blue;

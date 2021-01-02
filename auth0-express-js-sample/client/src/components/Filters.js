@@ -140,6 +140,7 @@ class Filters extends Component {
             {this.state.columnsToRender[0] === true ? (
               <div class="col-sm-2">
                 <a>{"סוג"}</a>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "1" ? (
                     <div class="mb-2">
@@ -156,6 +157,7 @@ class Filters extends Component {
             {this.state.columnsToRender[1] === true ? (
               <div class="col-sm-2">
                 <a>{"מגדר"}</a>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "2" ? (
                     <div class="mb-2 ">
@@ -220,6 +222,7 @@ class Filters extends Component {
             {this.state.columnsToRender[5] === true ? (
               <div class="col-sm-2">
                 <a>{"כמות שותפים"}</a>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "6" ? (
                     <div class="mb-2">
