@@ -5,7 +5,7 @@ import './Feed.scss'
 const Feed = () => {
   const { isAuthenticated } = useAuth0();
 
-  return isAuthenticated ? <text className="feedText">You are loggedin so the Post form  will be here </text> : <text className="feedText">Login to see post form </text>;
+  return isAuthenticated ? <text></text> : <text > </text>;
 };
 
 export default Feed

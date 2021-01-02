@@ -1,7 +1,6 @@
 
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
-import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
 import './Feed.scss'
@@ -16,8 +15,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/ForumCard.css';
 import '../components/jumbo.css';
-import useVisiblityToggler from '../hooks/useVisiblityToggler'
-const backend_url = process.env.REACT_APP_BACKEND_URL;
+const backend_url = process.env.REACT_APP_SERVER_URL;
 
 
 
@@ -39,14 +37,7 @@ const Feed = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [ContactCardComponent, toggleCardVisiblity] = useVisiblityToggler(
-    <Jumbotron >
-    <NewRequest addToList={forumCard => {
-      setStudyRequest([...forumCards, forumCard]);
-    }} />
-    </Jumbotron >,
-    false
-  );
+
 
   const HandleStudyRequests = (data) => {
     console.log("data", data)
@@ -76,7 +67,6 @@ const Feed = () => {
 
   const changeStudyRequstQuery = (r) => {
     setStudyRequstQuery(r);
-
   }
 
 
@@ -89,9 +79,9 @@ const Feed = () => {
   return ( /*isAuthenticated ?*/
 
     <div className='feed'>
-      <Button variant="success" style={{ float: "center" }} onClick={toggleCardVisiblity}> בקשת למידה חדשה</Button>
+     
 
-      {ContactCardComponent}
+      <NewRequest/>
       {/* <DropDown
         degrees={degrees}
         courses={selectedDegree && selectedDegree.courses}
@@ -100,10 +90,12 @@ const Feed = () => {
         onDegreeSelectClick={handleDegreeSelectClick}
         onCourseSelectClick={handleCourseSelectClick}
       /> */}
-      <SearchComp />
+                      <br />
+
+      {/* <SearchComp /> */}
 
 
-      <h4> Select Filters:</h4>
+      <h4> סינון תוצאות</h4>
       <div class="bigjumbo">
         <Jumbotron >
 
@@ -112,7 +104,7 @@ const Feed = () => {
       </div>
 
       {loading === true ?
-        (<Loading/>)
+        (<Loading/>)  
       :(<div>
             <h4> תוצאות החיפוש: {forumCards.length}</h4>
             {forumCards}

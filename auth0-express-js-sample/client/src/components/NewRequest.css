@@ -1,9 +1,51 @@
-.newRequestForm {
-    width: 75%;
-    right: 180px;
-    
-    
-}
-.form-group{
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  body {
+    direction: rtl;
+  }
+  p.specialP {
+    color: red;
+  }
+  .modal-header .close {
+    padding: 1rem 2rem;
+    margin: -1rem -1rem -1rem auto;
+  }
+  .ButtonW {
+    background-color: transparent !important;
+    color: grey !important;
+    width: 50% !important;
+    margin-left: 10% !important;
+    margin-top: 2% !important;
+    text-align: right !important;
+    border-radius: 20px !important;
+  }
+  .ButtonW:hover {
+    background-color: transparent !important;
+    color: grey !important;
+    cursor: text !important;
+  }
+  .Headline {
+    background-color: transparent;
+    color: grey;
+    width: 80% !important;
+    margin-left: 10%;
     margin-top: 2%;
-}
+    text-align: right;
+    border-radius: 20px;
+  }
+  .Description {
+    background-color: transparent;
+    color: grey;
+    width: 80% !important;
+    margin-left: 10%;
+    margin-top: 2%;
+    text-align: right;
+    border-radius: 20px;
+  }
+  .buttonD {
+    direction: rtl;
+    margin: 2%;
+  }
+  

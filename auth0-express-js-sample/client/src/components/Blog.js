@@ -5,7 +5,7 @@ const Blog = () => {
   const [names, setNames] = useState([]);
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
-  const backend_url = process.env.REACT_APP_BACKEND_URL;
+  const backend_url = process.env.REACT_APP_SERVER_URL;
 
   useEffect(() => {
     axios
