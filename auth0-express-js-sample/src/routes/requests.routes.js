@@ -22,5 +22,5 @@ module.exports = app => {
 
 
 
-  app.use('/api/studyRequests', router);
+  app.use('/api/requests', router);
 };

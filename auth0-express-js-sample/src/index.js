@@ -25,10 +25,10 @@ require("./routes/turorial.routes.js")(app);
 require("./routes/students.routes.js")(app);
 require("./routes/courses.routes.js")(app);
 require("./routes/degrees.routes.js")(app);
-require("./routes/detailsToShow.routes.js")(app);
+require("./routes/studOpenDet.routes.js")(app);
 require("./routes/reqAv.routes.js")(app);
 require("./routes/requests.routes.js")(app);
-// require("./routes/studentCourses.routes.js")(app);   //TODO
+require("./routes/studOpenByMatch.routes.js")(app);
 
 const db = require("./models/db.js");
 // db.sequelize.sync({ force: true }).then(() => {

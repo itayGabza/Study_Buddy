@@ -1,16 +1,16 @@
 const db = require("../models/db.js");
-const StudentCourses = db.studentCourses;
+const Sod = db.studOpenDet;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Student-courses
+// Create and Save a new studOpenDet
 
 
-// Retrieve all Student-courses from the database.
+// Retrieve all studOpenDet from the database.
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  StudentCourses.findAll({ where: condition })
+  Sod.findAll({ where: condition })
     .then(data => {
       if (Array.isArray(data))
         res.send(data);
@@ -20,22 +20,22 @@ exports.findAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving student-courses."
+          err.message || "Some error occurred while retrieving studOpenDet."
       });
     });
 };
 
-// Find a single Student-courses with an id
+// Find a single studOpenDet with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  StudentCourses.findByPk(id)
+  Sod.findByPk(id)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Student-courses with id=" + id
+        message: "Error retrieving studOpenDet with id=" + id
       });
     });
 };

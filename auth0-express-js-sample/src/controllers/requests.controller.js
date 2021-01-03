@@ -10,30 +10,32 @@ exports.create = (req, res) => {
 
   newReq = inputCheck(req, "create");
 
-  console.log("newReq email is ", newReq.studentEmail);
+  console.log("newReq email is ", newReq.studentEmail); //TODO
   //pulling gender from the students data by its email
-  var gender = "male";
+  var gender = "-1";
 
-  Students.findOne = (req, res) => {
-    return Student.findByPk(req.studentEmail)
-      .then((data) => {
-        gender = data.gender;
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "[server error] ------ Error retrieving Student gender at 'create request'" + gender
-        });
+  Students.findByPk(newReq.studentEmail) //TODO - why is there return here
+    .then((data) => {
+      gender = data.gender;
+      console.log("user gender = ", gender);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "[server error] ------ Error retrieving Student gender at 'create request'" + gender
       });
-  };
+    });
+  console.log("user gender after loop = ", gender);
 
   const request = {
     course: newReq.course,
     studyMethod: newReq.studyMethod,
     studyingFor: newReq.studyingFor,
     groupSize: newReq.groupSize,
-    studyTime: newReq.studyTime,
+    gender: gender,
     studyLevel: newReq.studyLevel,
-    studyGender: gender,
+    studyTime: newReq.studyTime,
+    headLine: newReq.headLine,
+    reqDescription: newReq.reqDescription,
     studentEmail: newReq.studentEmail
   };
   // Save Students in the database
@@ -93,12 +95,13 @@ exports.filters = (req, res) => {
   Requests.findAll({
     where: {
       course: req.course,
+      studyMethod: req.studyMethod,
       studyingFor: req.studyingFor,
       groupSize: req.groupSize,
-      studyMethod: req.studyMethod,
+      gender: req.gender,
       studyLevel: req.studyLevel,
-      studyGender: req.studyGender,
-      studyTime: req.studyTime
+      studyTime: req.studyTime,
+
     },
   })
     .then(data => {
@@ -119,64 +122,63 @@ exports.filters = (req, res) => {
 
 function inputCheck(req, whoCalls) {
 
-  const objectiveOptions = ["homeWork", "test", "exam", "assignment", "other"];
+  const studyingForOptions = ["homeWork", "test", "exam", "assignment", "other"];
   const genderOptions = ["male", "female", "mix"];
   const levelOptions = ["good", "medium", "bad"];
-  const locationOptions = ["zoom", "frontal", "other"];
-  const whenOptions = ["morning", "noon", "afterNoon", "evening", "night"];
-  const sizeOptions = [2, 3, 4, "5Plus"];
+  const studyMethodOptions = ["zoom", "frontal", "other"];
+  const studyTimeOptions = ["morning", "noon", "afterNoon", "evening", "night"];
+  const sizeOptions = ["2", "3", "4", "5Plus"];
   const courseOptions = ["math", "history", "physics", "english", "grammer"];
 
   var res = {};
 
   if (whoCalls == 'filters') {
-    var objective = req.query.objective;
+    var studyingFor = req.query.studyingFor;
     var gender = req.query.gender;
-    var level = req.query.level;
-    var location = req.query.location;
-    var when = req.query.when;
-    var size = req.query.size;
-    var email = req.query.email;
+    var studyLevel = req.query.studyLevel;
+    var studyMethod = req.query.studyMethod;
+    var studyTime = req.query.studyTime;
+    var groupSize = req.query.groupSize;
     var course = req.query.course;
 
-    objective ? !objectiveOptions.includes(objective) ? console.log("[server error] --- wrong parameters for objectives in filters function (requests)")
-      : console.log("objective found") : objective = objectiveOptions;
+    studyingFor ? !studyingForOptions.includes(studyingFor) ? console.log("[server error] --- wrong parameters for studyingFor in filters function (requests)")
+      : console.log("studyingFor found") : studyingFor = studyingForOptions;
     gender ? !genderOptions.includes(gender) ? console.log("[server error] --- wrong parameters for gender in filters function (requests)")
       : console.log("gender found") : gender = genderOptions;
-    level ? !levelOptions.includes(level) ? console.log("[server error] --- wrong parameters for level in filters function (requests)")
-      : console.log("level found") : level = levelOptions;
-    location ? !locationOptions.includes(location) ? console.log("[server error] --- wrong parameters for location in filters function (requests)")
-      : console.log("location found") : location = locationOptions;
-    when ? !whenOptions.includes(when) ? console.log("[server error] --- wrong parameters for when in filters function (requests)")
-      : console.log("when request found") : when = whenOptions;
-    size ? !sizeOptions.includes(size) ? console.log("[server error] --- wrong parameters for size in filters function (requests)")
-      : console.log("size request found") : size = sizeOptions;
+    studyLevel ? !levelOptions.includes(studyLevel) ? console.log("[server error] --- wrong parameters for studyLevel in filters function (requests)")
+      : console.log("studyLevel found") : studyLevel = levelOptions;
+    studyMethod ? !studyMethodOptions.includes(studyMethod) ? console.log("[server error] --- wrong parameters for studyMethod in filters function (requests)")
+      : console.log("studyMethod found") : studyMethod = studyMethodOptions;
+    studyTime ? !studyTimeOptions.includes(studyTime) ? console.log("[server error] --- wrong parameters for studyTime in filters function (requests)")
+      : console.log("studyTime request found") : studyTime = studyTimeOptions;
+    groupSize ? !sizeOptions.includes(groupSize) ? console.log("[server error] --- wrong parameters for groupSize in filters function (requests)")
+      : console.log("groupSize request found") : groupSize = sizeOptions;
     course ? !courseOptions.includes(course) ? console.log("[server error] --- wrong parameters for course in filters function (requests)")
       : console.log("course request found") : course = courseOptions;
 
     res = {
       course: course,
-      studyMethod: location,
-      studyingFor: objective,
-      groupSize: size ? size : 2,
-      studyTime: when,
-      studyGender: gender,
-      studyLevel: level,
-      studentEmail: email //TODO figure out the EMAIL
+      studyMethod: studyMethod,
+      studyingFor: studyingFor,
+      groupSize: groupSize ? groupSize : 2,
+      gender: gender,
+      studyLevel: studyLevel,
+      studyTime: studyTime,
     };
   }
 
 
   if (whoCalls == 'create') {
-    console.log("recieved email is ", req.body.studentEmail);
+
     res = {
       course: courseOptions.includes(req.body.course) ? req.body.course : "math",
-      studyMethod: locationOptions.includes(req.body.location) ? req.body.location : "zoom",
-      studyingFor: objectiveOptions.includes(req.body.objective) ? req.body.objective : "exam",
-      groupSize: sizeOptions.includes(req.body.size) ? req.body.size : 2,
-      studyTime: whenOptions.includes(req.body.when) ? req.body.when : "evening",
-      // studyGender: genderOptions.includes(req.gender)? req.gender: "male",     //not needed because the gender is being extracted from the students table
-      studyLevel: levelOptions.includes(req.body.level) ? req.body.level : "medium",
+      studyMethod: studyMethodOptions.includes(req.body.studyMethod) ? req.body.studyMethod : "zoom",
+      studyingFor: studyingForOptions.includes(req.body.studyingFor) ? req.body.studyingFor : "exam",
+      groupSize: sizeOptions.includes(req.body.groupSize) ? req.body.groupSize : 2,
+      studyLevel: levelOptions.includes(req.body.studyLevel) ? req.body.studyLevel : "medium",
+      studyTime: studyTimeOptions.includes(req.body.studyTime) ? req.body.studyTime : "evening",
+      headLine: req.body.headLine, //TODO add verification input checks
+      reqDescription: req.body.reqDescription, //TODO add verification input checks
       studentEmail: req.body.studentEmail //TODO figure out the EMAIL check
     };
   }

@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   // Validate request
   const body = req.body;
-  if (!body.email || !body.name || !body.password || !body.gender || !body.age || !body.degree) {
+  if (!body.email || !body.name || !body.lastName || !body.password || !body.gender || !body.age || !body.degree) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -20,10 +20,13 @@ exports.create = (req, res) => {
   const student = {
     email: body.email,
     name: body.name,
+    lastName: body.lastName,
     password: body.password,
     gender: body.gender,
     age: body.age,
     degree: body.degree,
+    facebook: body.facebook,
+    phone: body.phone
   };
   // Save Students in the database
   Student.create(student)
