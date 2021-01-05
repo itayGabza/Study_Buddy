@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     age: {
       type: Sequelize.INTEGER,
-      defaultValue: "-1) "
+      defaultValue: "-1"
     },
     degree: {
       type: Sequelize.STRING
