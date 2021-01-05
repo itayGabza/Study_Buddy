@@ -25,12 +25,13 @@ require("./routes/turorial.routes.js")(app);
 require("./routes/students.routes.js")(app);
 require("./routes/courses.routes.js")(app);
 require("./routes/degrees.routes.js")(app);
-require("./routes/studOpenDet.routes.js")(app);
+require("./routes/studOpenDets.routes.js")(app);
 require("./routes/reqAv.routes.js")(app);
 require("./routes/requests.routes.js")(app);
-require("./routes/studOpenByMatch.routes.js")(app);
+require("./routes/studOpenByMatches.routes.js")(app);
 
 const db = require("./models/db.js");
+
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });

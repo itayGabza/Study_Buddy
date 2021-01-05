@@ -42,6 +42,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   }, { timestamps: false });
   // Requests.removeAttribute('id');
-  //  myDate: { type: Sequelize.DATE, defaultValue: Sequelize.NOW },
   return Requests;
 };

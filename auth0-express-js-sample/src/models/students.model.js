@@ -5,20 +5,23 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       primaryKey: true
     },
-    name: {
+    firstName: {
       type: Sequelize.STRING
     },
     lastName: {
       type: Sequelize.STRING
     },
-    password: {
-      type: Sequelize.STRING
+    aboutMe: {
+      type: Sequelize.STRING,
+      defaultValue: "just a nice student"
     },
     gender: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      defaultValue: "dont want to say ;) "
     },
     age: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      defaultValue: "-1) "
     },
     degree: {
       type: Sequelize.STRING

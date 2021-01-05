@@ -1,23 +1,24 @@
 
 module.exports = (sequelize, Sequelize) => {
-  const Sod = sequelize.define("studOpenDet", {
+  const Sod = sequelize.define("studOpenDets", {
 
     openText: {
       type: Sequelize.STRING
     },
-    whatsapp: {
+    phone: {
       type: Sequelize.INTEGER
     },
     email: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     facebook: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     picture: {
-      type: Sequelize.STRING  //TODO to correct!!!!
+      type: Sequelize.INTEGER  //TODO to correct!!!!
     }
   }, { timestamps: false });
+
   Sod.removeAttribute('id');
   return Sod;
 };

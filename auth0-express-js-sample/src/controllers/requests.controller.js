@@ -54,7 +54,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Requests from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
+  const title = req.query.title; //TODO
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   Requests.findAll({ where: condition })

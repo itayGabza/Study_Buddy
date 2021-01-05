@@ -1,23 +1,24 @@
 
 module.exports = (sequelize, Sequelize) => {
-  const StudOpenByMatch = sequelize.define("studOpenByMatch", {
+  const StudOpenByMatches = sequelize.define("studOpenByMatches", {
 
     openText: {
       type: Sequelize.STRING
     },
-    whatsapp: {
+    phone: {
       type: Sequelize.INTEGER
     },
     email: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     facebook: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     picture: {
-      type: Sequelize.STRING  //TODO to correct!!!!
+      type: Sequelize.INTEGER  //TODO to correct!!!!
     }
   }, { timestamps: false });
   // StudOpenByMatch.removeAttribute('id');
-  return StudOpenByMatch;
+
+  return StudOpenByMatches;
 };
