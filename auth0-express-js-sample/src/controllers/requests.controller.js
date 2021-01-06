@@ -4,51 +4,125 @@ const Students = db.students;
 
 const Op = db.Sequelize.Op;
 
+const studyingForOptions = ["homeWork", "test", "exam", "assignment", "other"];
+const genderOptions = ["male", "female", "mix"];
+const studyLevelOptions = ["good", "medium", "bad"];
+const studyMethodOptions = ["zoom", "frontal", "other"];
+const studyTimeOptions = ["morning", "noon", "afterNoon", "evening", "night"];
+const groupSizeOptions = ["2", "3", "4", "5Plus"];
+const courseOptions = ["math", "history", "physics", "english", "grammer"];
+
+/**
+ * Validates whether a value is included in a list.
+ * @returns value itself if exists, or fallbackValue if not
+ */
+function validator(value, list, fallbackValue) {
+  if (list.includes(value)) {
+    console.log(`${[list[value]]} found`)
+    return value;
+  }
+  else {
+    console.log(`[server error] --- wrong parameters for ${[list]} in filters function (${[list]})`);
+    return fallbackValue || list;
+  }
+}
+
+function validateFiltersData(data) {
+  return {
+    gender: validator(data.gender, genderOptions),
+    studyingFor: validator(data.studyingFor, studyingForOptions),
+    course: validator(data.course, courseOptions),
+    studyMethod: validator(data.studyMethod, studyMethodOptions),
+    studyLevel: validator(data.studyLevel, studyLevelOptions),
+    groupSize: validator(data.groupSize, groupSizeOptions, 2),
+    studyTime: validator(data.studyTime, studyTimeOptions),
+  }
+}
+
+function validateCreateData(data) {
+  return {
+    course: validator(data.course, courseOptions, "math"),
+    studyMethod: validator(data.studyMethod, studyMethodOptions, "zoom"),
+    studyingFor: validator(data.studyingFor, studyingForOptions, "exam"),
+    groupSize: validator(data.groupSize, groupSizeOptions, 2),
+    studyLevel: validator(data.studyLevel, studyLevelOptions, "medium"),
+    studyTime: validator(data.studyTime, studyTimeOptions, "evening"),
+    // headLine: validator(data.headLine, headLineOptions),
+    // reqDescription: validator(data.reqDescription, reqDescriptionOptions),
+    // studentEmail: validator(data.studentEmail, studentEmailOptions),
+  };
+
+  return res;
+}
 // Create and Save a new Request
 // Create a request
 exports.create = (req, res) => {
 
-  newReq = inputCheck(req, "create");
+  const { studentEmail, headLine, reqDescription } = req.body;
+  const { course, studyMethod, studyingFor, groupSize, studyLevel, studyTime } = validateCreateData(req.body);
 
-  console.log("newReq email is ", newReq.studentEmail); //TODO
   //pulling gender from the students data by its email
   var gender = "-1";
 
-  Students.findByPk(newReq.studentEmail) //TODO - why is there return here
+  const findByPk = Students.findByPk(studentEmail) //TODO - why is there return here
     .then((data) => {
       gender = data.gender;
       console.log("user gender = ", gender);
+      return gender;
+
     })
     .catch(err => {
       res.status(500).send({
         message: "[server error] ------ Error retrieving Student gender at 'create request'" + gender
       });
+      return undefined;
     });
-  console.log("user gender after loop = ", gender);
 
-  const request = {
-    course: newReq.course,
-    studyMethod: newReq.studyMethod,
-    studyingFor: newReq.studyingFor,
-    groupSize: newReq.groupSize,
-    gender: gender,
-    studyLevel: newReq.studyLevel,
-    studyTime: newReq.studyTime,
-    headLine: newReq.headLine,
-    reqDescription: newReq.reqDescription,
-    studentEmail: newReq.studentEmail
-  };
-  // Save Students in the database
-  Requests.create(request)
-    .then(data => {
-      res.send(data);
-    })
+  findByPk.then(gender => {
+    if (!gender) return;
+    const request = {
+      course,
+      studyMethod,
+      studyingFor,
+      groupSize,
+      gender,
+      studyLevel,
+      studyTime,
+      headLine,
+      reqDescription,
+      studentEmail
+    };
+    // Save Students in the database
+    Requests.create(request)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "[server error] ---- Some error occurred while creating request"
+        });
+        return;
+      });
+  })
+};
+
+
+exports.update = (req, res) => {
+  const email = req.params.email;
+  const id = req.params.id;
+
+  console.log("updating request"); //TODO printing comment
+  Requests.update(req.body, {
+    where: { email: email }
+  })
+    .then(res.send({
+      message: `updated the request`
+    }))
     .catch(err => {
       res.status(500).send({
-        message:
-          err.message || "[server error] ---- Some error occurred while creating request"
+        message: "Error updating request with email=" + email
       });
-      return;
     });
 };
 
@@ -89,19 +163,18 @@ exports.findAllByStudent = (req, res) => {
 
 // Find all Requests with the conditions
 exports.filters = (req, res) => {
-
-  req = inputCheck(req, "filters"); //checks and corrects the inputs to make the query correct
-
+  const results = validateFiltersData(req.query);
+  console.log("results", results);
+  const { gender, course, studyMethod, studyingFor, groupSize, studyTime, studyLevel } = results;
   Requests.findAll({
     where: {
-      course: req.course,
-      studyMethod: req.studyMethod,
-      studyingFor: req.studyingFor,
-      groupSize: req.groupSize,
-      gender: req.gender,
-      studyLevel: req.studyLevel,
-      studyTime: req.studyTime,
-
+      gender,
+      course,
+      studyMethod,
+      studyingFor,
+      groupSize,
+      studyTime,
+      studyLevel
     },
   })
     .then(data => {
@@ -117,73 +190,3 @@ exports.filters = (req, res) => {
       });
     });
 };
-
-
-
-function inputCheck(req, whoCalls) {
-
-  const studyingForOptions = ["homeWork", "test", "exam", "assignment", "other"];
-  const genderOptions = ["male", "female", "mix"];
-  const levelOptions = ["good", "medium", "bad"];
-  const studyMethodOptions = ["zoom", "frontal", "other"];
-  const studyTimeOptions = ["morning", "noon", "afterNoon", "evening", "night"];
-  const sizeOptions = ["2", "3", "4", "5Plus"];
-  const courseOptions = ["math", "history", "physics", "english", "grammer"];
-
-  var res = {};
-
-  if (whoCalls == 'filters') {
-    var studyingFor = req.query.studyingFor;
-    var gender = req.query.gender;
-    var studyLevel = req.query.studyLevel;
-    var studyMethod = req.query.studyMethod;
-    var studyTime = req.query.studyTime;
-    var groupSize = req.query.groupSize;
-    var course = req.query.course;
-
-    studyingFor ? !studyingForOptions.includes(studyingFor) ? console.log("[server error] --- wrong parameters for studyingFor in filters function (requests)")
-      : console.log("studyingFor found") : studyingFor = studyingForOptions;
-    gender ? !genderOptions.includes(gender) ? console.log("[server error] --- wrong parameters for gender in filters function (requests)")
-      : console.log("gender found") : gender = genderOptions;
-    studyLevel ? !levelOptions.includes(studyLevel) ? console.log("[server error] --- wrong parameters for studyLevel in filters function (requests)")
-      : console.log("studyLevel found") : studyLevel = levelOptions;
-    studyMethod ? !studyMethodOptions.includes(studyMethod) ? console.log("[server error] --- wrong parameters for studyMethod in filters function (requests)")
-      : console.log("studyMethod found") : studyMethod = studyMethodOptions;
-    studyTime ? !studyTimeOptions.includes(studyTime) ? console.log("[server error] --- wrong parameters for studyTime in filters function (requests)")
-      : console.log("studyTime request found") : studyTime = studyTimeOptions;
-    groupSize ? !sizeOptions.includes(groupSize) ? console.log("[server error] --- wrong parameters for groupSize in filters function (requests)")
-      : console.log("groupSize request found") : groupSize = sizeOptions;
-    course ? !courseOptions.includes(course) ? console.log("[server error] --- wrong parameters for course in filters function (requests)")
-      : console.log("course request found") : course = courseOptions;
-
-    res = {
-      course: course,
-      studyMethod: studyMethod,
-      studyingFor: studyingFor,
-      groupSize: groupSize ? groupSize : 2,
-      gender: gender,
-      studyLevel: studyLevel,
-      studyTime: studyTime,
-    };
-  }
-
-
-  if (whoCalls == 'create') {
-
-    res = {
-      course: courseOptions.includes(req.body.course) ? req.body.course : "math",
-      studyMethod: studyMethodOptions.includes(req.body.studyMethod) ? req.body.studyMethod : "zoom",
-      studyingFor: studyingForOptions.includes(req.body.studyingFor) ? req.body.studyingFor : "exam",
-      groupSize: sizeOptions.includes(req.body.groupSize) ? req.body.groupSize : 2,
-      studyLevel: levelOptions.includes(req.body.studyLevel) ? req.body.studyLevel : "medium",
-      studyTime: studyTimeOptions.includes(req.body.studyTime) ? req.body.studyTime : "evening",
-      headLine: req.body.headLine, //TODO add verification input checks
-      reqDescription: req.body.reqDescription, //TODO add verification input checks
-      studentEmail: req.body.studentEmail //TODO figure out the EMAIL check
-    };
-  }
-
-  return res;
-}
-
-

@@ -92,25 +92,17 @@ exports.findOne = (req, res) => {
 
 // Update a Student by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.id;
-
+  const email = req.params.email;
+  console.log("updating student"); //TODO printing comment
   Student.update(req.body, {
-    where: { id: id }
+    where: { email: email }
   })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Student was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Student with id=${id}. Maybe Student was not found or req.body is empty!`
-        });
-      }
-    })
+    .then(res.send({
+      message: `updated the request`
+    }))
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Student with id=" + id
+        message: "Error updating Student with email=" + email
       });
     });
 };
