@@ -182,6 +182,7 @@ class Filters extends Component {
             {this.state.columnsToRender[2] === true ? (
               <div class="col-sm-2">
                 <a>{"רמת שליטה בחומר"}</a>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "3" ? (
                     <div class="mb-2 ">
@@ -198,6 +199,7 @@ class Filters extends Component {
             {this.state.columnsToRender[3] === true ? (
               <div class="col-sm-2">
                 <a>{"סביבת הלמידה"}</a>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "4" ? (
                     <div class="mb-2">
@@ -214,6 +216,7 @@ class Filters extends Component {
             {this.state.columnsToRender[4] === true ? (
               <div class="col-sm-2">
                 <a>{"זמן מועדף ללמידה"}</a>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "5" ? (
                     <div class="mb-2">
