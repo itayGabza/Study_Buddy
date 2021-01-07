@@ -41,6 +41,7 @@ class BootstrapNavbar extends React.Component {
                                     >
                                         פרופיל
                                     </NavLink>
+                                    <AuthNav  className="nav-link" />
 
                                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -55,7 +56,7 @@ class BootstrapNavbar extends React.Component {
 
                                 
                             </Navbar.Collapse>
-                            {/* <AuthNav /> */}
+                           
                                    
                                 
                             

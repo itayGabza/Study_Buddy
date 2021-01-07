@@ -1,9 +1,26 @@
 .jumbo {
-    margin-top: -50px ;
-    margin-bottom: -80px;
-    
+  margin-top: -50px;
+  margin-bottom: -80px;
 }
 
 .bigjumbo {
-    width: 77%;
+  width: 100%;
+}
+
+.navbar-dark .nav-link-auth .navbar-nav .nav-link {
+  color: rgb(42 169 230);
+}
+
+.button.loginButton {
+  color: #2AA9E6;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  button.loginButton {
+    padding:0 8px 8px 8px;
+    color: #2AA9E6;
+    padding-left: .5rem;
+    margin-right: 40px;
+
+  }
 }

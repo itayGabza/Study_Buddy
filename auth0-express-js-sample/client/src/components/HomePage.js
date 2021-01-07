@@ -6,6 +6,7 @@ import Feed from "../views/Feed";
 import Post from "../views/Post";
 import Blog from "../components/Blog";
 import SignUp from "../components/SignUp";
+import AboutUs from "../components/AboutUs";
 
 import HomeImage from "../data/img/home.jpg";
 import HomeImage2 from "../data/img/students_studying.jpg";
@@ -31,6 +32,7 @@ function HomePage() {
       <div id="section-one">
         {/* <section style={objectAssign({},)} id="section-one"> */}
         <img src={HomeImage2} className="responsie_img" alt=""></img>
+        <AboutUs></AboutUs>
       </div>
       {/* </section> */}
       <section id="post">
