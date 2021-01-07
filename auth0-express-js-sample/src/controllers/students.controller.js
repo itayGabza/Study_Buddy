@@ -1,6 +1,5 @@
 const db = require("../models/db.js");
 const Student = db.students;
-const Requests = db.requests;
 const Op = db.Sequelize.Op;
 
 
@@ -9,7 +8,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   // Validate request
   const body = req.body;
-  if (!body.email || !body.name || !body.password || !body.gender || !body.age || !body.degree) {
+  if (!body.email || !body.firstName || !body.lastName || !body.degree) {  // !body.gender || !body.age
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -19,11 +18,14 @@ exports.create = (req, res) => {
   // Create a Students
   const student = {
     email: body.email,
-    name: body.name,
-    password: body.password,
+    firstName: body.name,
+    lastName: body.lastName,
+    aboutMe: body.aboutMe,
     gender: body.gender,
     age: body.age,
     degree: body.degree,
+    facebook: body.facebook,
+    phone: body.phone
   };
   // Save Students in the database
   Student.create(student)
@@ -33,14 +35,14 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Tutorial."
+          err.message || "Some error occurred while creating the student."
       });
     });
 };
 
 // Retrieve all Students from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
+  const title = req.query.title; //TODO
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   Student.findAll({ where: condition })
@@ -90,25 +92,17 @@ exports.findOne = (req, res) => {
 
 // Update a Student by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.id;
-
+  const email = req.params.email;
+  console.log("updating student"); //TODO printing comment
   Student.update(req.body, {
-    where: { id: id }
+    where: { email: email }
   })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Student was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Student with id=${id}. Maybe Student was not found or req.body is empty!`
-        });
-      }
-    })
+    .then(res.send({
+      message: `updated the request`
+    }))
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Student with id=" + id
+        message: "Error updating Student with email=" + email
       });
     });
 };
@@ -127,7 +121,7 @@ exports.delete = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete Student with id=${id}. Maybe Tutorial was not found!`
+          message: `Cannot delete Student with id=${id}. Maybe Student was not found!`
         });
       }
     })

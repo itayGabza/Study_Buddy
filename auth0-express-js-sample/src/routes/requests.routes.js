@@ -8,19 +8,21 @@ module.exports = app => {
   router.post("/create", requests.create);
 
   // Retrieve all requests
-  router.get("/", requests.findAll);
+  router.get("/findall", requests.findAll);
 
   //filters the requests
-  router.get("/filters", requests.filters);  //TODO filter requests by what?
+  router.get("/filters", requests.filters);
 
+  // Update a Student with id
+  router.put("/:email", requests.update); //TODO should be by course
 
   // Retrieve a single requests with id
   //router.get("/:email", requests.findOne);  //TODO filter requests by what?
 
   // find all requests by a student
-  router.get("/:email", requests.findAllByStudent);  //TODO filter requests by what?
+  router.get("/:email", requests.findAllByStudent);
 
 
 
-  app.use('/api/studyRequests', router);
+  app.use('/api/requests', router);
 };

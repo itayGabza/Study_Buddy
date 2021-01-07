@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     groupSize: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER.UNSIGNED
     },
     studyLevel: {
       type: Sequelize.STRING
@@ -27,9 +27,19 @@ module.exports = (sequelize, Sequelize) => {
     studyTime: {
       type: Sequelize.STRING
     },
-    studyGender: {
+    gender: {
       type: Sequelize.STRING
     },
+    headLine: {
+      type: Sequelize.STRING
+    },
+    reqDescription: {
+      type: Sequelize.STRING
+    },
+    creationTime: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW
+    }
   }, { timestamps: false });
   // Requests.removeAttribute('id');
   return Requests;
