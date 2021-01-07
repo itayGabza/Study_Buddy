@@ -23,7 +23,7 @@ function validator(value, list, fallbackValue) {
   }
   else {
     console.log(`[server error] --- wrong parameters for ${[list]} in filters function (${[list]})`);
-    return fallbackValue || list;
+    return list;
   }
 }
 
@@ -161,7 +161,7 @@ exports.findAllByStudent = (req, res) => {
     });
 };
 
-// Find all Requests with the conditions
+// Find all Requests with the conditions 
 exports.filters = (req, res) => {
   const results = validateFiltersData(req.query);
   console.log("results", results);
