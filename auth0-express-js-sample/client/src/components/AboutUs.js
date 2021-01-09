@@ -29,13 +29,13 @@ class AboutUs extends React.Component {
     render() {
         const isClicked = this.state.isClicked;
         return (
-            <div className="AboutUsStyle">
+            <div class="text-center" className="AboutUsStyle">
                 {isClicked
                     ? 
-                    <div class="text-center"> 
+                    <div class="text-center" className="infoStyle"> 
                         <AboutUsInfo></AboutUsInfo>
                         <div className="infoButtonStyle">
-                            <Button variant="danger" class="mx-auto" onClick={this.handleClickCloseClick} >
+                            <Button variant="danger" class="align-self-center mx-auto" onClick={this.handleClickCloseClick} >
                                 קרא פחות  
                             </Button>
                         </div>
@@ -43,7 +43,7 @@ class AboutUs extends React.Component {
                     : 
                     <div class="text-center"> 
                         <div className="infoButtonStyle">
-                            <Button variant="success" onClick={this.handleClickOpenClick} >
+                            <Button class="align-self-center mx-auto" variant="success" onClick={this.handleClickOpenClick} >
                                 מזה Study Buddy?
                             </Button>
                         </div>
