@@ -13,11 +13,11 @@ module.exports = (sequelize, Sequelize) => {
     },
     aboutMe: {
       type: Sequelize.STRING,
-      defaultValue: "just a nice student"
+      defaultValue: "default value, did not enter any about"
     },
     gender: {
       type: Sequelize.STRING,
-      defaultValue: "dont want to say ;) "
+      defaultValue: "default value, did not enter any gender"
     },
     age: {
       type: Sequelize.INTEGER,

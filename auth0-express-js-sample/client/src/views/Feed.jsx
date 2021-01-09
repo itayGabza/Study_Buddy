@@ -51,9 +51,9 @@ const Feed = () => {
 
 
   useEffect(() => {
-    console.log(backend_url.concat('/api/studyRequests').concat(StudyRequstQery))
+    console.log(backend_url.concat('/api/requests').concat(StudyRequstQery))
     axios
-      .get(`${backend_url}`.concat('/api/studyRequests').concat(StudyRequstQery))
+      .get(`${backend_url}`.concat('/api/requests').concat(StudyRequstQery))
       .then((res) => {
         HandleStudyRequests(res.data)
 

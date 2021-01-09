@@ -10,11 +10,10 @@ exports.create = (req, res) => {
   const body = req.body;
   if (!body.email || !body.firstName || !body.lastName || !body.degree) {  // !body.gender || !body.age
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "this Content in creating new student can not be empty!"
     });
     return;
   }
-
   // Create a Students
   const student = {
     email: body.email,

@@ -1,0 +1,25 @@
+/* .AboutUsStyle {
+    background-color: rgb(246, 241, 235); */
+   /* border: solid rgb(0, 255, 13);
+} */
+.infoButtonStyle{
+    margin-top: 2px;
+    margin-left: auto;
+    margin-right:auto;
+    
+    padding: 10px;
+    
+}
+
+.infoStyle{
+    background-color: rgb(244, 235, 246); 
+}
+
+/* .infoButtonStyle div {
+    display: flex;
+    text-align: center;
+}  */
+
+.OpenButton{
+    style: success
+}

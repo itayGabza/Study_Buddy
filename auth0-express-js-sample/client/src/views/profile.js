@@ -9,16 +9,16 @@ const Profile = () => {
   const { user } = useAuth0();
   const { name, picture, email } = user;
 
-  const [names, setNames] = useState([]);
+  const [requests, setRequests] = useState([]);
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
   const backend_url = process.env.REACT_APP_SERVER_URL;
 
-  useEffect(() => {
+  useEffect((email) => {
     axios
-      .get(`${backend_url}/test`)
+      .get(`${backend_url}/requsts/:A@a`)
       .then((res) => {
-        setNames(res.data);
+        setRequests(res.data);
         setLoad(true);
       })
       .catch((err) => {
@@ -26,15 +26,34 @@ const Profile = () => {
         setLoad(true);
       });
   }, [backend_url]);
-  return (
-   <h1>sup</h1>
-  );
-};
 
+ /*  if (load) {
+    return (
+      <ul>
+        {error ? (
+          <li>{error.message}</li>
+        ) : 
+             {requests.map((request, index) => (
+             <li key={index}>
+              <h1>{request}</h1>
+             </li>
+           ))}
+        }
+      </ul>
+    );
+  } else {
+    return <div>Loading...</div>;
+  }
+
+}; */
+
+return (
+  <h1> sup</h1>
+)}
 export default Profile;
 
-/* 
 
+/*
 <div>
 <div className="row align-items-center profile-header">
   <div className="col-md-2 mb-3">
@@ -54,4 +73,5 @@ export default Profile;
     {JSON.stringify(user, null, 2)}
   </pre>
 </div>
-</div> */
+</div>   
+// */
