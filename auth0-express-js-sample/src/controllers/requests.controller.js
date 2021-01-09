@@ -148,15 +148,19 @@ exports.findAll = (req, res) => {
 
 // Find a single Requests with an id
 exports.findAllByStudent = (req, res) => {
-  const email = req.params.email;
+  const email = req.params.email; //TODO
 
-  Students.findByPk(email, { include: ["requests"] })
-    .then((data) => {
-      res.send(data);
+  Requests.findAll({ where: { studentEmail: email } })
+    .then(data => {
+      if (Array.isArray(data))
+        res.send(data);
+      else
+        res.send([data])
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Requests with email=" + email
+        message:
+          err.message || "Some error occurred while retrieving specific student Requests (findAllByStudent)"
       });
     });
 };
