@@ -12,6 +12,7 @@ import ContentCard from './views/ContentCard'
 import ProtectedRoute from "./auth/protected-route";
 
 import "./app.css";
+import SignUp from "./components/SignUp";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -27,6 +28,7 @@ const App = () => {
       <div >
         <Switch>
           <Route path="/" exact component={HomePage} />
+          <Route path="/signup" exact component={SignUp} />
           <ProtectedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/external-api" component={ExternalApi} />
         </Switch>

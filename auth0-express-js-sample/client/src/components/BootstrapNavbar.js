@@ -41,6 +41,16 @@ class BootstrapNavbar extends React.Component {
                                     >
                                         פרופיל
                                     </NavLink>
+                                    <NavLink
+                                        to="/signUp"
+                                        exact
+                                        className="nav-link"
+                                        activeClassName="router-link-exact-active"
+                                    >
+                                        הירשם
+                                    </NavLink>
+
+                            
 
                                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
