@@ -5,6 +5,7 @@ import {NavLink,} from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import Interactive from 'react-interactive';
 import { HashLink } from 'react-router-hash-link';
+import SignUp from "./SignUp";
 
 class BootstrapNavbar extends React.Component {
 
@@ -41,20 +42,21 @@ class BootstrapNavbar extends React.Component {
                                     >
                                         פרופיל
                                     </NavLink>
-<<<<<<< HEAD
+
                                     <NavLink
-                                        to="/signUp"
+                                        to="/SignUp"
                                         exact
                                         className="nav-link"
                                         activeClassName="router-link-exact-active"
                                     >
                                         הירשם
-                                    </NavLink>
+                                    </NavLink>            
 
-                            
-=======
+
+
+
                                     <AuthNav  className="nav-link-auth" />
->>>>>>> d47caca37c7f3a27bab2130890660be215c89335
+
 
                                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
