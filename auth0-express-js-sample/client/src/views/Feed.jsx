@@ -29,7 +29,8 @@ const formCardsData = [];
 
 
 const Feed = () => {
-  const [StudyRequstQery, setStudyRequstQuery] = useState('')
+  // why use const and not null ?
+  var [StudyRequstQery, setStudyRequstQuery] = useState('')
   const { isAuthenticated } = useAuth0();
   const [selectedCourse, setSelectedCourse] = useState(null)
   const [forumCards, setForumCards] = useState(formCardsData);
@@ -51,6 +52,11 @@ const Feed = () => {
 
 
   useEffect(() => {
+    if (StudyRequstQery == "")
+    {
+      StudyRequstQery = '/findall'
+    }
+    console.log("query", StudyRequstQery)
     console.log(backend_url.concat('/api/requests').concat(StudyRequstQery))
     axios
       .get(`${backend_url}`.concat('/api/requests').concat(StudyRequstQery))
