@@ -1,67 +1,55 @@
-
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import './Feed.scss'
-import ForumCard from '../components/ForumCard';
+import "./Feed.scss";
+import ForumCard from "../components/ForumCard";
 // import DropDown from '../components/DropDown';
-import SearchComp from '../components/Search/SearchComp';
+import SearchComp from "../components/Search/SearchComp";
 
-import Filters from '../components/Filters';
-import NewRequest from '../components/NewRequest';
-import Loading  from "../components/loading";
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../components/ForumCard.css';
-import '../components/jumbo.css';
+import Filters from "../components/Filters";
+import NewRequest from "../components/NewRequest";
+import Loading from "../components/loading";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../components/ForumCard.css";
+import "../components/jumbo.css";
 const backend_url = process.env.REACT_APP_SERVER_URL;
-
-
-
-
 
 const formCardsData = [];
 // new FormCard("Home Assignment 3", "Home Work", "Male", "Good", "Zoom", "Morning", "4"),
 // new FormCard("Home Assignment 6", "Home Work", "Good", "3"),
 // new FormCard("Studying for final exam", "Exam preperation", "Good", "2")
 
-
-
 const Feed = () => {
   // why use const and not null ?
-  var [StudyRequstQery, setStudyRequstQuery] = useState('')
+  var [StudyRequstQery, setStudyRequstQuery] = useState("");
   const { isAuthenticated } = useAuth0();
-  const [selectedCourse, setSelectedCourse] = useState(null)
+  const [selectedCourse, setSelectedCourse] = useState(null);
   const [forumCards, setForumCards] = useState(formCardsData);
   const [studyRequest, setStudyRequest] = useState();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-
   const HandleStudyRequests = (data) => {
-    console.log("data", data)
-    const studyRequestsToRender = data.map(formCard =>
-
+    console.log("data", data);
+    const studyRequestsToRender = data.map((formCard) => (
       <ForumCard {...formCard} />
-
-    );
-    setForumCards(studyRequestsToRender)
-  }
-
+    ));
+    setForumCards(studyRequestsToRender);
+  };
 
   useEffect(() => {
-    if (StudyRequstQery == "")
-    {
-      StudyRequstQery = '/findall'
+    if (StudyRequstQery == "") {
+      StudyRequstQery = "/findall";
     }
-    console.log("query", StudyRequstQery)
-    console.log(backend_url.concat('/api/requests').concat(StudyRequstQery))
+    console.log("query", StudyRequstQery);
+    console.log(backend_url.concat("/api/requests").concat(StudyRequstQery));
     axios
-      .get(`${backend_url}`.concat('/api/requests').concat(StudyRequstQery))
+      .get(`${backend_url}`.concat("/api/requests").concat(StudyRequstQery))
       .then((res) => {
-        HandleStudyRequests(res.data)
+        HandleStudyRequests(res.data);
 
         setLoading(false);
       })
@@ -69,25 +57,21 @@ const Feed = () => {
         setError(err.message);
         setLoading(false);
       });
-  }, [StudyRequstQery]);// useEffect apply when StudyRequstQery change. 
+  }, [StudyRequstQery]); // useEffect apply when StudyRequstQery change.
 
   const changeStudyRequstQuery = (r) => {
     setStudyRequstQuery(r);
-  }
+  };
 
-
-  const compsToRender = forumCards.map(formCard =>
-
+  const compsToRender = forumCards.map((formCard) => (
     <ForumCard {...formCard} />
-  );
+  ));
 
+  return (
+    /*isAuthenticated ?*/
 
-  return ( /*isAuthenticated ?*/
-
-    <div className='feed'>
-     
-
-      <NewRequest/>
+    <div className="feed">
+      <NewRequest />
       {/* <DropDown
         degrees={degrees}
         courses={selectedDegree && selectedDegree.courses}
@@ -96,30 +80,37 @@ const Feed = () => {
         onDegreeSelectClick={handleDegreeSelectClick}
         onCourseSelectClick={handleCourseSelectClick}
       /> */}
-                      <br />
+      <br />
 
       {/* <SearchComp /> */}
 
-
       <h4> סינון תוצאות</h4>
       <div class="bigjumbo">
-        <Jumbotron >
-
-          <Filters changeStudyRequstQuery={changeStudyRequstQuery} sentFromStudyRequest={false} />
+        <Jumbotron>
+          <Filters
+            changeStudyRequstQuery={changeStudyRequstQuery}
+            sentFromStudyRequest={false}
+          />
         </Jumbotron>
       </div>
 
-      {loading === true ?
-        (<Loading/>)  
-      :(<div>
+      {loading === true ? (
+        <Loading />
+      ) : (
+        <div>
+          <div className="h4Style">
             <h4> תוצאות החיפוש: {forumCards.length}</h4>
-            {forumCards}
-          </div>)
-      }
+          </div>
+
+          {forumCards}
+        </div>
+      )}
     </div> /*:
     
-    <text className="feedText">Login to see the feed </text>*/)
+    <text className="feedText">Login to see the feed </text>*/
+   /*:
+    
+    <text className="feedText">Login to see the feed </text>*/);
 };
 
-export default Feed
-
+export default Feed;

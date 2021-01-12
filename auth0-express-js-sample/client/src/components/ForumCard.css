@@ -1,5 +1,5 @@
 .cardEdit {
-    width: 50%;
+    width: 75%;
     margin: 20px;
     border-radius: 10px;
     border: none;
@@ -17,6 +17,12 @@
     color:white;
     width: 60px;
 }
+
+.badge-good {
+    width: 195px;
+}
+
+
 .badge-female{
     background-color: #dc35a1;
     color: white;
