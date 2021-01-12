@@ -20,13 +20,14 @@ const ForumCard = (props) => {
         }
     }
 
-    const checkStudyingFor = (studyingFor) =>{
-        if (studyingFor=="exam") {
+    var checkStudyingFor = (studyingFor) =>{
+        console.log("studyingFor", studyingFor)
+        if ( (studyingFor === "exam") || (studyingFor === "test") ) {
             return "למידה למבחן"
-        } else if (studyingFor =="other"){
-            return "אחר"
-        } else {
+        } else if ( (studyingFor === "homeWork") || (studyingFor === "assignment")){
             return "שיעורי בית"
+        } else {
+            return "אחר"
         }
     }
 
@@ -59,6 +60,7 @@ const ForumCard = (props) => {
 
     return (
         <div class="cardEdit">
+        {console.log("Props of study request")}
         {console.log(props)}
         {/* 
         The names of the props are according to the backend data. 
@@ -66,15 +68,15 @@ const ForumCard = (props) => {
         */}
         <Card className="bootstrapCard" >
             <Card.Body>
-                <Card.Title>{props.title}</Card.Title>
+                <Card.Title>{props.headLine}</Card.Title>
                 <Card.Title>
                 <Badge variant="secondary">{checkStudyingFor(props.studyingFor)}</Badge>{' '}
                 </Card.Title>
                 <Card.Text>
                   
-                    <Badge variant={props.studyGender=="male"?"male":"female"}>{props.studyGender=="male"?"גברים":"נשים"}</Badge>{' '}
+                    <Badge variant={props.gender==="male"?"male":"female"}>{props.gender==="male"?"גברים":"נשים"}</Badge>{' '}
                     <Badge variant={checkLevel(props.studyLevel)}>{checkLevelname(props.studyLevel)}</Badge>{' '}
-                    <Badge variant={props.studyMethod=="zoom"?"success":"frontal"}>{props.studyMethod=="zoom"?"פרונטלי":"זום"}</Badge>{' '}
+                    <Badge variant={props.studyMethod==="zoom"?"success":"warning"}>{props.studyMethod==="zoom"?"זום":"פרונטלי"}</Badge>{' '}
                     <Badge variant="success">{checkTimeName(props.studyTime)}</Badge>{' '}
                     <Badge variant="warning">{props.groupSize <= 4 ? props.groupSize: "+5"  }</Badge>{' '}  
                     <Badge variant="warning"></Badge>{' '} 

@@ -19,7 +19,7 @@ const options = [
   { value: "morning", label: "בבוקר", column: "5", color: 'lime', query: 'studyTime' },
   { value: "noon", label: "בצהריים", column: "5", color: 'lime', query: 'studyTime' },
   { value: "afterNoon", label: "אחר הצהריים", column: "5", color: 'lime', query: 'studyTime' },
-  { value: "Evening", label: "בערב", column: "5", color: 'lime', query: 'studyTime' },
+  { value: "evening", label: "בערב", column: "5", color: 'lime', query: 'studyTime' },
   { value: "2", label: "2", column: "6", color: 'olivedrab', query: 'groupSize' },
   { value: "3", label: "3", column: "6", color: 'olivedrab', query: 'groupSize' },
   { value: "4", label: "4", column: "6", color: 'olivedrab', query: 'groupSize' },
