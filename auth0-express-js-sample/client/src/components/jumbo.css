@@ -7,6 +7,12 @@
   width: 100%;
 }
 
+.jumbotron {
+    margin-bottom: 0px;
+    padding: 15px;
+    border-radius: 11px
+ }
+
 .navbar-dark .nav-link-auth .navbar-nav .nav-link {
   color: rgb(42 169 230);
 }

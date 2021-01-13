@@ -19,7 +19,7 @@ const options = [
   { value: "morning", label: "בבוקר", column: "5", color: 'lime', query: 'studyTime' },
   { value: "noon", label: "בצהריים", column: "5", color: 'lime', query: 'studyTime' },
   { value: "afterNoon", label: "אחר הצהריים", column: "5", color: 'lime', query: 'studyTime' },
-  { value: "Evening", label: "בערב", column: "5", color: 'lime', query: 'studyTime' },
+  { value: "evening", label: "בערב", column: "5", color: 'lime', query: 'studyTime' },
   { value: "2", label: "2", column: "6", color: 'olivedrab', query: 'groupSize' },
   { value: "3", label: "3", column: "6", color: 'olivedrab', query: 'groupSize' },
   { value: "4", label: "4", column: "6", color: 'olivedrab', query: 'groupSize' },
@@ -149,6 +149,7 @@ class Filters extends Component {
               <div class="col-sm-2">
                 <a>{"סוג"}</a>
                 <br></br>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "1" ? (
                     <div class="mb-2">
@@ -166,6 +167,7 @@ class Filters extends Component {
               <div class="col-sm-2">
                 <a>{"מגדר"}</a>
                 <br></br>
+                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "2" ? (
                     <div class="mb-2 ">
@@ -182,7 +184,6 @@ class Filters extends Component {
             {this.state.columnsToRender[2] === true ? (
               <div class="col-sm-2">
                 <a>{"רמת שליטה בחומר"}</a>
-                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "3" ? (
                     <div class="mb-2 ">
@@ -216,7 +217,6 @@ class Filters extends Component {
             {this.state.columnsToRender[4] === true ? (
               <div class="col-sm-2">
                 <a>{"זמן מועדף ללמידה"}</a>
-                <br></br>
                 {this.state.buttonsToRender.map((item, i) =>
                   item.column === "5" ? (
                     <div class="mb-2">
