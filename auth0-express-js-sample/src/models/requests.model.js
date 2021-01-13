@@ -27,7 +27,10 @@ module.exports = (sequelize, Sequelize) => {
     studyTime: {
       type: Sequelize.STRING
     },
-    gender: {
+    myGender: {
+      type: Sequelize.STRING
+    },
+    reqGender: {
       type: Sequelize.STRING
     },
     headLine: {
