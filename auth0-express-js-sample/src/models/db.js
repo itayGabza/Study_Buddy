@@ -33,20 +33,20 @@ db.reqAv = require("./reqAv.model.js")(sequelize, Sequelize);
 db.studOpenByMatches = require("./studOpenByMatches.model.js")(sequelize, Sequelize);
 
 db.students.hasMany(db.requests, { as: "requests" });
-db.requests.belongsTo(db.students, {
-  foreignKey: "studentEmail",
-  as: "students",
+db.requests.belongsTo(db.students, {  // requests has a foreign key from Students
+  foreignKey: "studentEmail", //the foreign key will be in colomn named "studentEmail"
+  as: "students",  //when wanting to include it in answers we will use the shortcut students
 });
 
 db.students.hasMany(db.studOpenDets, { as: "studOpenDets" });
 db.studOpenDets.belongsTo(db.students, {
-  through: "studentsEmail",
+  foreignKey: "studentEmail",
   as: "students",
 });
 
 db.students.hasMany(db.studOpenByMatches, { as: "studOpenByMatches" });
 db.studOpenByMatches.belongsTo(db.students, {
-  through: "studentsEmail",
+  foreignKey: "studentEmail",
   as: "students",
 });
 

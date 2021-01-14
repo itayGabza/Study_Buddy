@@ -42,6 +42,9 @@ module.exports = (sequelize, Sequelize) => {
     creationTime: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW
+    },
+    studentEmail: {
+      type: Sequelize.STRING
     }
   }, { timestamps: false });
   // Requests.removeAttribute('id');

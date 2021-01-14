@@ -120,12 +120,11 @@ exports.create = (req, res) => {
 
 
 exports.update = (req, res) => {
-  const email = req.params.email;
   const id = req.params.id;
 
   console.log("updating request"); //TODO printing comment
   Requests.update(req.body, {
-    where: { email: email }
+    where: { id: id }
   })
     .then(res.send({
       message: `updated the request`

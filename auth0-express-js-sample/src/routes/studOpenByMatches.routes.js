@@ -3,13 +3,17 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  //creating a new chart for the details that be open by matching students
+  //creating a new chart for the studOpenByMatches
   router.post("/create", studOpenByMatches.create);
-  // Retrieve all student-courses
+
+  // Retrieve all studOpenByMatches
   router.get("/findAll", studOpenByMatches.findAll);
 
-  // Retrieve a single student-courses with id
-  router.get("/:email", studOpenByMatches.findOne);
+  // Retrieve a single studOpenByMatches with email
+  // router.get("/:email", studOpenByMatches.findOne);
+
+  //update the studOpenByMatches details
+  router.put("/:email", studOpenByMatches.update);
 
 
   app.use('/api/studOpenByMatches', router);
