@@ -6,24 +6,24 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   // Validate request
   const binarray = [0, 1];
-  if (!req.body.studentEmail || !req.body.email || !req.body.facebook || !req.body.phone || !req.body.picture ||  //TODO verification on the studentEmail
-    !binarray.includes(req.body.email) || !binarray.includes(req.body.facebook) || !binarray.includes(req.body.phone) || !binarray.includes(req.body.picture)) {
+  const { studentEmail, email, facebook, phone, picture, openText } = req.body;
+  if (!studentEmail || !binarray.includes(email) || !binarray.includes(facebook) ||
+    !binarray.includes(phone) || !binarray.includes(picture) || !binarray.includes(openText)) {//TODO verification on the studentEmail
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "problems with content for studOpenByMatch"
     });
     return;
   }
-
-  // Create a Students
+  // Create a studOpenByMatch
   const studOpenByMatch = {
-    studentsEmail: req.body.studentEmail,
-    email: req.body.email,
-    facebook: req.body.facebook,
-    phone: req.body.phone,
-    picture: req.body.picture,
-    openText: req.body.openText
+    studentEmail: studentEmail,
+    email: email,
+    facebook: facebook,
+    phone: phone,
+    picture: picture,
+    openText: openText
   };
-  // Save Students in the database
+  // Save studOpenByMatch in the database
   StudOpenByMatch.create(studOpenByMatch)
     .then(data => {
       res.send(data);
@@ -36,11 +36,11 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all studOpenByMatch from the database.
-exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
+// Retrieve all studOpenDet from the database.
+exports.findAll = (req, res) => {
+  const email = req.query.email;
+  var condition = email ? { studentEmail: email } : undefined;
   StudOpenByMatch.findAll({ where: condition })
     .then(data => {
       if (Array.isArray(data))
@@ -56,19 +56,18 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single studOpenByMatch with an id
-exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  StudOpenByMatch.findByPk(id)
-    .then(data => {
-      res.send(data);
-    })
+exports.update = (req, res) => {
+  const email = req.params.email;
+  StudOpenByMatch.update(req.body, {
+    where: { studentEmail: email }
+  })
+    .then(res.send({
+      message: `updated the studOpenByMatch`
+    }))
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving studOpenByMatch with id=" + id
+        message: "Error updating studOpenByMatch with email=" + email
       });
     });
 };
-
 

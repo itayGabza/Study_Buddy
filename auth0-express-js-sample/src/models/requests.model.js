@@ -27,7 +27,10 @@ module.exports = (sequelize, Sequelize) => {
     studyTime: {
       type: Sequelize.STRING
     },
-    gender: {
+    myGender: {
+      type: Sequelize.STRING
+    },
+    reqGender: {
       type: Sequelize.STRING
     },
     headLine: {
@@ -39,6 +42,9 @@ module.exports = (sequelize, Sequelize) => {
     creationTime: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW
+    },
+    studentEmail: {
+      type: Sequelize.STRING
     }
   }, { timestamps: false });
   // Requests.removeAttribute('id');

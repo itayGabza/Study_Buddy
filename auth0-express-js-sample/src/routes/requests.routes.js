@@ -14,7 +14,7 @@ module.exports = app => {
   router.get("/filters", requests.filters);
 
   // Update a Student with id
-  router.put("/:email", requests.update); //TODO should be by course
+  router.put("/:id", requests.update); //TODO should be by course
 
   // Retrieve a single requests with id
   //router.get("/:email", requests.findOne);  //TODO filter requests by what?
