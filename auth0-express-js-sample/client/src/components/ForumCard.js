@@ -68,9 +68,18 @@ const ForumCard = (props) => {
         */}
         <Card className="bootstrapCard" >
             <Card.Body>
-                <Card.Title>{props.headLine}</Card.Title>
+                <div className="cardHeadline">
+                    <div class="row">
+                        <div class="col-md-8 text-right">
+                            <Card.Title>{props.headLine}</Card.Title>
+                        </div>
+                        <div class="col-md-4 text-left">
+                            <Card.Title><Badge variant={props.myGender==="male"?"male":"female"}>{props.myGender==="male"?"גבר":"אישה"}</Badge>{' '}</Card.Title>
+                        </div>
+                    </div>
+                </div>
                 <Card.Title>
-                <Badge variant="secondary">{checkStudyingFor(props.studyingFor)}</Badge>{' '}
+                    <Badge variant="secondary">{checkStudyingFor(props.studyingFor)}</Badge>{' '}
                 </Card.Title>
                 <Card.Text>
                   
@@ -81,11 +90,10 @@ const ForumCard = (props) => {
                     <Badge variant="warning">{props.groupSize <= 4 ? props.groupSize: "+5"  }</Badge>{' '}  
                     <Badge variant="warning"></Badge>{' '} 
                     <br></br>
-                      מחפש !!!!!ללמוד בכיף עם בירה בסוף
-                    מחפש ללמוד בכיף עם בירה בסוף
-                    מחפש ללמוד בכיף עם בירה בסוף
-                    מחפש ללמוד בכיף עם בירה בסוף
-                    מחפש ללמוד בכיף עם בירה בסוף
+                    <text>
+                    <p></p>
+                    {props.reqDescription}
+                    </text>
 
                  </Card.Text>
                 <Button variant="primary" >פרטים ליצירת קשר</Button>
