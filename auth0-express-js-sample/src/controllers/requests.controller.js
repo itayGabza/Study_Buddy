@@ -22,7 +22,7 @@ function validator(value, list, fallbackValue, forwho) {
     return value;
   }
   else {
-    console.log(`[server error] --- wrong parameters for ${[list]} in filters function (${[list]})`);
+    console.log(`[server message] --- got no filter for ${value} field. returns all options between ${[list]}`);
     return fallbackValue ? fallbackValue : list
 
   }
@@ -53,23 +53,19 @@ function validateCreateData(data) {
     // reqDescription: validator(data.reqDescription, reqDescriptionOptions),
     // studentEmail: validator(data.studentEmail, studentEmailOptions),
   };
-
-  return res;
 }
 // Create and Save a new Request
 // Create a request
 exports.create = (req, res) => {
-
   const { studentEmail, headLine, reqDescription } = req.body;
   const { course, studyMethod, studyingFor, groupSize, studyLevel, studyTime, reqGender } = validateCreateData(req.body);
   //pulling gender from the students data by its email
   var myGender = "-1";
 
-  const findByPk = Students.findByPk(studentEmail) //TODO - why is there return here
+  const findByPk = Students.findByPk(studentEmail)
     .then((data) => {
       myGender = data.gender;
       return myGender;
-
     })
     .catch(err => {
       res.status(500).send({
@@ -79,7 +75,6 @@ exports.create = (req, res) => {
     });
 
   findByPk.then(myGender => {
-    console.log("sss");
     const request = {
       course,
       studyMethod,
@@ -93,13 +88,9 @@ exports.create = (req, res) => {
       reqDescription,
       studentEmail
     };
-    console.log("sasdsadss");
-
     // Save Students in the database
     Requests.create(request)
       .then(data => {
-        console.log("got here444");
-
         res.send(data);
       })
       .catch(err => {
@@ -121,8 +112,6 @@ exports.create = (req, res) => {
 
 exports.update = (req, res) => {
   const id = req.params.id;
-
-  console.log("updating request"); //TODO printing comment
   Requests.update(req.body, {
     where: { id: id }
   })
@@ -138,8 +127,8 @@ exports.update = (req, res) => {
 
 // Retrieve all Requests from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title; //TODO
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const email = req.query.email;
+  var condition = email ? { studentEmail: email } : undefined;
 
   Requests.findAll({ where: condition })
     .then(data => {
@@ -178,7 +167,7 @@ exports.findAllByStudent = (req, res) => {
 // Find all Requests with the conditions 
 exports.filters = (req, res) => {
   const results = validateFiltersData(req.query);
-  console.log("results", results);
+  console.log("filters by fields -> ", results);
   const { myGender, course, studyMethod, studyingFor, groupSize, studyTime, studyLevel } = results;
   Requests.findAll({
     where: {
@@ -188,7 +177,7 @@ exports.filters = (req, res) => {
       studyingFor,
       groupSize,
       studyTime,
-      studyLevel
+      studyLevel,
     },
   })
     .then(data => {
