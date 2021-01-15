@@ -14,7 +14,7 @@ const options = [
   { value: "good", label: "טוב", column: "3", color: 'yellow', query: 'studyLevel' },
   { value: "medium", label: "בינוני", column: "3", color: 'yellow', query: 'studyLevel' },
   { value: "bad", label: "מתקשה", column: "3", color: 'yellow', query: 'studyLevel' },
-  { value: "zoom", label: "זום", column: "4", color: 'green', query: 'studyMethod' },
+  { value: "zoom", label: "Zoom", column: "4", color: 'green', query: 'studyMethod' },
   { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green', query: 'studyMethod' },
   { value: "morning", label: "בבוקר", column: "5", color: 'lime', query: 'studyTime' },
   { value: "noon", label: "בצהריים", column: "5", color: 'lime', query: 'studyTime' },

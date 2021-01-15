@@ -1,18 +1,29 @@
+
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.25rem;
+
+}
+
+.col-9 {
+    padding: 0 10px 0 0;
+}
+
 .cardEdit {
-    width: 75%;
-    margin: 20px;
+    width: 65%;
+    margin: 20px 70px 20px 0;
     border-radius: 10px;
     border: none;
+    justify-items: stretch;
 }
+
 
 .myGenderBadge{
     border-radius: 25px;
 }
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 0.1rem 1rem 0.8rem 1rem;
-}
+
 
 .badge:hover {
     flex: 1 1 auto;
@@ -35,6 +46,13 @@
     color: white;
     width: 60px;
 }
+
+.badge-zoom{
+    background-color:#007bff;
+    color: white;
+    width: 60px;
+}
+
 .badge-frontal{
     
     background-color: #69d38a;
@@ -50,30 +68,7 @@
 
 @media all and (max-width: 600px) {
     .cardEdit {
-    width: 90%;
-    margin: 10px;
+    width: 100%;
+    margin: 10px 10px 10px 0px;
   }
 }
-.bootstrapCard{
-    border-radius: 50px;
-}
-
-/* 
-.blocks {
-    
-} */
-
-/* .ForumCardblock {
-    width: 75%;
-    
-}
-
- .FilterBlocks{
-    position: absolute;
-    right: 50px;
-    width: 200px;
-    height: 120px;
-    border: 3px solid gree
-}  */
-
- 

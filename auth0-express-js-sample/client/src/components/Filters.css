@@ -40,7 +40,6 @@ button + button {
   display: flex;
   border-radius: 11px;
   flex-direction: row;
-  background: rgb(238, 238, 196);
 }
 
 .col-sm-2 {
@@ -50,6 +49,7 @@ button + button {
   display: block;
   flex-flow: row wrap;
   border-radius: 11px;
+  background: rgb(238, 238, 196);
 }
 
 @media all and (max-width: 780px) {
