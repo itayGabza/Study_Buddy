@@ -40,7 +40,7 @@ const Feed = () => {
 
 
   const HandleStudyRequests = (data) => {
-    console.log("data", data)
+    console.log("data!!!!!!!!!!!", data)
     const studyRequestsToRender = data.map(formCard =>
 
       <ForumCard {...formCard} />
@@ -56,7 +56,7 @@ const Feed = () => {
       .get(`${backend_url}`.concat('/api/requests').concat(StudyRequstQery))
       .then((res) => {
         HandleStudyRequests(res.data)
-
+        console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
