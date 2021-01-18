@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
   const StudOpenByMatches = sequelize.define("studOpenByMatches", {
 
     openText: {
-      type: Sequelize.STRING
+      type: Sequelize.TEXT
     },
     phone: {
       type: Sequelize.INTEGER
@@ -16,9 +16,14 @@ module.exports = (sequelize, Sequelize) => {
     },
     picture: {
       type: Sequelize.INTEGER  //TODO to correct!!!!
+    },
+    studentEmail: {
+      type: Sequelize.STRING,
+      unique: true
     }
   }, { timestamps: false });
-  // StudOpenByMatch.removeAttribute('id');
+
+  StudOpenByMatches.removeAttribute('id');
 
   return StudOpenByMatches;
 };

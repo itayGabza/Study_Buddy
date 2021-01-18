@@ -36,9 +36,10 @@ button + button {
   background: rgb(169, 206, 248);
 }
 .rowFilter {
+  /* border: coral solid 2px; */
   display: flex;
+  border-radius: 11px;
   flex-direction: row;
-  background: rgb(238, 238, 196);
 }
 
 .col-sm-2 {
@@ -47,9 +48,11 @@ button + button {
   flex: margin-left;
   display: block;
   flex-flow: row wrap;
+  border-radius: 11px;
+  background: rgb(238, 238, 196);
 }
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 780px) {
   .rowFilter {
     display: block;
   }
@@ -66,7 +69,7 @@ a {
   text-align: center;
   display: block;
 }
-@media (min-width: 576px) {
+@media (min-width: 780px) {
   .jumbotron {
     padding: 4rem 2rem 1rem 2rem;
   }
@@ -76,4 +79,10 @@ a {
   margin-bottom: 2rem;
   background-color: #e9ecef;
   border-radius: 0.3rem;
+}
+
+@media(min-width: 1200px){
+  br{
+     display:none;
+  }
 }

@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
   const Sod = sequelize.define("studOpenDets", {
 
     openText: {
-      type: Sequelize.STRING
+      type: Sequelize.TEXT
     },
     phone: {
       type: Sequelize.INTEGER
@@ -16,6 +16,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     picture: {
       type: Sequelize.INTEGER  //TODO to correct!!!!
+    },
+    studentEmail: {
+      type: Sequelize.STRING,
+      unique: true
     }
   }, { timestamps: false });
 

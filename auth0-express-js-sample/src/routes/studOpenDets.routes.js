@@ -6,11 +6,14 @@ module.exports = app => {
   //creating a new chart for the details that are open
   router.post("/create", studOpenDets.create);
 
-  // Retrieve all student-courses
+  // Retrieve all studOpenDets
   router.get("/findAll", studOpenDets.findAll);
 
-  // Retrieve a single student-courses with id
-  router.get("/:email", studOpenDets.findOne);
+  // Retrieve a single studOpenDets with id
+  // router.get("/:email", studOpenDets.findOne);
+
+  //update the studOpenDets details
+  router.put("/:email", studOpenDets.update);
 
 
   app.use('/api/studOpenDets', router);
