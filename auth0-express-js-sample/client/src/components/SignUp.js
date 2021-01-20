@@ -48,7 +48,7 @@ const SignUp = () => {
                     <h3 className="fieldsHeads fieldsHeadsDots">שם משפחה</h3>
                     <Form.Control
                         type="text" 
-                        name="lastName" 
+                        name="studentDetails.lastName" 
                         style={{ textAlign: "right" }} 
                         placeholder="שם משפחה"
                         ref={register({
@@ -61,7 +61,7 @@ const SignUp = () => {
                     <h3 className="fieldsHeads fieldsHeadsDots">שם פרטי</h3>
                     <Form.Control
                         type="text" 
-                        name="firstName" 
+                        name="studentDetails.firstName" 
                         style={{ textAlign: "right" }} 
                         placeholder="שם פרטי"
                         ref={register({
@@ -78,7 +78,7 @@ const SignUp = () => {
                     <h3 className="fieldsHeads">גיל</h3>
                     <Form.Control
                         type="number" 
-                        name="age" 
+                        name="studentDetails.age" 
                         placeholder="גיל"
                         ref={register}
                     />
@@ -89,7 +89,7 @@ const SignUp = () => {
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control 
                             type="text" 
-                            name="gender" 
+                            name="studentDetails.gender" 
                             as="select" 
                             ref={register}>
                             <option>לא מוגדר</option>
@@ -105,7 +105,7 @@ const SignUp = () => {
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control 
                             type="text" 
-                            name="degree" 
+                            name="studentDetails.degree" 
                             as="select" 
                             ref={register}>
                             <option>תעשיה וניהול</option>
@@ -123,7 +123,7 @@ const SignUp = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Control 
                         type="text" 
-                        name="aboutMe" 
+                        name="studentDetails.aboutMe" 
                         as="textarea" rows={3} 
                         style={{ textAlign: "right" }}
                         placeholder="על עצמי"
@@ -144,7 +144,7 @@ const SignUp = () => {
                         <Form.File 
                         id="exampleFormControlFile1"
                         type="file"
-                        name="image" 
+                        name="studentDetails.image" 
                         accept="image/png, image/jpeg"
                         ref={register}
                         />
@@ -162,7 +162,7 @@ const SignUp = () => {
                     <h3 className="fieldsHeads">פייסבוק</h3>
                     <Form.Control 
                     type="text"
-                    name="facebook"
+                    name="studentDetails.facebook"
                     style={{ textAlign: "right" }} 
                     placeholder="פייסבוק" 
                     ref={register}
@@ -173,7 +173,7 @@ const SignUp = () => {
                     <h3 className="fieldsHeads fieldsHeadsDots">טלפון</h3>
                     <Form.Control 
                     type="number"
-                    name="phone"
+                    name="studentDetails.phone"
                     style={{ textAlign: "right" }} 
                     placeholder="טלפון" 
                     ref={register({
@@ -190,7 +190,7 @@ const SignUp = () => {
                     <h3 className="fieldsHeads fieldsHeadsDots">אימייל</h3>
                     <Form.Control
                           type="text"
-                          name="email"
+                          name="studentDetails.email"
                           ref={register({
                             required: 'Email is required.',
                             pattern: {
@@ -214,25 +214,25 @@ const SignUp = () => {
                 <Form.Group className="checkboxes" controlId="formBasicCheckbox">
                     <Form.Check
                       type="checkbox"
-                      name= "showName"
+                      name= "studOpenDets.name"
                       label="ש שם " 
                       ref={register}
                       />
                       <Form.Check
                       type="checkbox"
-                      name= "showPicture"
+                      name= "studOpenDets.picture"
                       label="ש תמונה" 
                       ref={register}
                       />
                       <Form.Check
                       type="checkbox"
-                      name= "showContactInfo"
+                      name= "studOpenDets.contactInfo"
                       label="ש דרכי ההתקשרות שלי " 
                       ref={register}
                       />
                       <Form.Check
                       type="checkbox"
-                      name= "showParagraph"
+                      name= "studOpenDets.paragraph"
                       label="ש פסקת הרקע שלי " 
                       ref={register}
                       />
@@ -252,19 +252,19 @@ const SignUp = () => {
                 <Form.Group className="checkboxes" controlId="formBasicCheckbox">
                 <Form.Check
                       type="checkbox"
-                      name= "showParagraph"
+                      name= "studOpenByMatches.phone"
                       label="ש טלפון " 
                       ref={register}
                       />
                       <Form.Check
                       type="checkbox"
-                      name= "showParagraph"
+                      name= "studOpenByMatches.email"
                       label="ש אימייל " 
                       ref={register}
                       />
                       <Form.Check
                       type="checkbox"
-                      name= "showParagraph"
+                      name= "studOpenByMatches.facebook"
                       label="ש פייסבוק " 
                       ref={register}
                       />

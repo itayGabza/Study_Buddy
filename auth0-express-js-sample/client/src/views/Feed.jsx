@@ -33,16 +33,11 @@ const Feed = () => {
   const [error, setError] = useState("");
 
   const HandleStudyRequests = (data) => {
-<<<<<<< HEAD
-    console.log("data!!!!!!!!!!!", data)
+    console.log("data!!!!!!!!!!!", data);
     const studyRequestsToRender = data.map(formCard =>
 
-=======
-    console.log("data", data);
-    const studyRequestsToRender = data.map((formCard) => (
->>>>>>> 988a55817cb0f65773a2b08ff8dcaddbf3fe71e5
       <ForumCard {...formCard} />
-    ));
+    );
     setForumCards(studyRequestsToRender);
   };
 
@@ -55,13 +50,8 @@ const Feed = () => {
     axios
       .get(`${backend_url}`.concat("/api/requests").concat(StudyRequstQery))
       .then((res) => {
-<<<<<<< HEAD
-        HandleStudyRequests(res.data)
-        console.log(res.data);
-=======
         HandleStudyRequests(res.data);
 
->>>>>>> 988a55817cb0f65773a2b08ff8dcaddbf3fe71e5
         setLoading(false);
       })
       .catch((err) => {
