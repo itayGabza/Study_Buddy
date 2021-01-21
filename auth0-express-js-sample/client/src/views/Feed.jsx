@@ -14,7 +14,8 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/ForumCard.css";
 import "../components/jumbo.css";
-const backend_url = process.env.REACT_APP_SERVER_URL;
+//const backend_url = process.env.REACT_APP_SERVER_URL;
+const backend_url = 'http://localhost:6060';
 
 const formCardsData = [];
 // new FormCard("Home Assignment 3", "Home Work", "Male", "Good", "Zoom", "Morning", "4"),
@@ -98,14 +99,14 @@ const Feed = () => {
       {loading === true ? (
         <Loading />
       ) : (
-        <div>
-          <div className="h4Style">
-            <h4> תוצאות החיפוש: {forumCards.length}</h4>
-          </div>
+          <div>
+            <div className="h4Style">
+              <h4> תוצאות החיפוש: {forumCards.length}</h4>
+            </div>
 
-          {forumCards}
-        </div>
-      )}
+            {forumCards}
+          </div>
+        )}
     </div> /*:
     
     <text className="feedText">Login to see the feed </text>*/

@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
   const Sod = sequelize.define("studOpenDets", {
 
     openText: {
-      type: Sequelize.TEXT
+      type: Sequelize.INTEGER
     },
     phone: {
       type: Sequelize.INTEGER

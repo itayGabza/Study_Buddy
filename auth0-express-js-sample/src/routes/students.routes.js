@@ -2,7 +2,6 @@ module.exports = app => {
   const students = require("../controllers/students.controller.js");
 
   var router = require("express").Router();
-
   // Create a new Student
   router.post("/create", students.create);
 
@@ -11,6 +10,12 @@ module.exports = app => {
 
   // Retrieve a single Student with email
   router.get("/:email", students.findOne);
+
+  // Retrieve all opened details from a student
+  router.get("/openDets/:email", students.openDets);
+
+  // Retrieve all opened details from a student
+  router.get("/matchDets/:email", students.matchDets);
 
   // Update a Student with id
   router.put("/:email", students.update);
