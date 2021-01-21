@@ -20,7 +20,7 @@ module.exports = app => {
   //router.get("/:email", requests.findOne);  //TODO filter requests by what?
 
   // find all requests by a student
-  router.get("/:email", requests.findAllByStudent);
+  //router.get("/:email", requests.findAllByStudent);
 
 
 
