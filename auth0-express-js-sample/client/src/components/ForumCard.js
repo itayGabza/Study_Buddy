@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState }from 'react';
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './ForumCard.css';
 import Badge from 'react-bootstrap/Badge';
+import axios from 'axios';
+import { PhotoSizeSelectLargeOutlined } from '@material-ui/icons';
+const backend_url = process.env.REACT_APP_BACKEND_URL;
 
 
 
 const ForumCard = (props) => {
+
+    const[click, setClick] = useState(true);
+    const[contactDetails, setContactDetails] = useState('');
+    const [load, setLoad] = useState(false);
+    const [error, setError] = useState('');
 
     const checkLevel = (level) => {
         if (level === "good") {
@@ -18,6 +26,22 @@ const ForumCard = (props) => {
         else {
             return "danger"
         }
+    }
+
+    const handleOpenDetails = () => {
+       setClick(false);
+       axios.get(`${backend_url}/students/findall?email=A@a`)
+        .then((res) =>{
+            setContactDetails(res.data);
+            PhotoSizeSelectLargeOutlined(true);
+        })
+        .catch(err =>{
+            setError(err.message);
+            setLoad(true);
+        })
+    }
+    const handleCloseDetails = () => {
+        setClick(true);
     }
 
     var checkStudyingFor = (studyingFor) => {
@@ -57,7 +81,7 @@ const ForumCard = (props) => {
     }
 
 
-
+    const isClicked = click;
     return (
         <div class="cardEdit">
             {console.log("Props of study request")}
@@ -98,7 +122,18 @@ const ForumCard = (props) => {
                         </text>
 
                     </Card.Text>
-                    <Button variant="primary" >פרטים ליצירת קשר</Button>
+                    {click
+                    ?
+                    <Button variant="primary" onClick={handleOpenDetails}>פרטים ליצירת קשר</Button>
+                    :
+                    <div>
+                        
+                        <h1>supppppp</h1>
+                        <h1>supppppp</h1>
+                    <Button variant="primary" onClick={handleCloseDetails}>סגור פרטים</Button>
+                    </div>
+                }
+                    
                 </Card.Body>
             </Card>
         </div>
