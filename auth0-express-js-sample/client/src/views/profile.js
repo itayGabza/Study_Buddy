@@ -10,48 +10,70 @@ const Profile = () => {
   const { user } = useAuth0();
   const { name, picture, email } = user;
 
-  const [requests, setRequests] = useState([]);
-  const [load, setLoad] = useState(false);
+  const formCardsData = [];
+  var [StudyRequstQery, setStudyRequstQuery] = useState("");
+  const { isAuthenticated } = useAuth0();
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [forumCards, setForumCards] = useState([]);
+  const [studyRequest, setStudyRequest] = useState(formCardsData);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const backend_url = process.env.REACT_APP_BACKEND_URL;
 
-  useEffect((email) => {
-    axios.get(`${backend_url}/requests/A@a`)
+  const HandleStudyRequests = (data) => {
+    console.log("data!!!!!!!!!!!", data);
+    const studyRequestsToRender = data.map(formCard =>
+
+      <ForumCard {...formCard} />
+    );
+    setForumCards(studyRequestsToRender);
+  };
+
+  useEffect(() => {
+    if (StudyRequstQery == "") {
+      StudyRequstQery = "/findall?email=A@a";
+    }
+    console.log("query", StudyRequstQery);
+    console.log(backend_url.concat("/requests").concat(StudyRequstQery));
+    axios
+      .get(`${backend_url}`.concat("/requests").concat(StudyRequstQery))
       .then((res) => {
-        console.log(res);
-        console.log("Supppppppp");
-        setRequests(res.data);
-        setLoad(true);
+        HandleStudyRequests(res.data);
+
+        setLoading(false);
       })
       .catch((err) => {
         setError(err.message);
-        setLoad(true);
+        setLoading(false);
       });
-  }, []);
+  }, [StudyRequstQery]); // useEffect apply when StudyRequstQery change.
 
-  if(load){
-    return(
-      <div>
-        {
-          error ? <li>{error.message}</li>
-          :
-          requests.forEach((request) => 
-            <ForumCard 
-           studyMethod={request.studyMethod}
-           studyGender={request.gender}
-           studyLevel={request.studyLevel}
-           studyTime={request.studyTime}
-           groupSize={request.groupSize}
-           studyMethod={request.studyMethod}
-            />
-          )}
+  const changeStudyRequstQuery = (r) => {
+    setStudyRequstQuery(r);
+  };
+
+  const compsToRender = forumCards.map((formCard) => (
+    <ForumCard {...formCard} />
+  ));
+
+
+  return (
+
+    <div>
+      <div className="h4Style">
+        <h4> תוצאות החיפוש: {forumCards.length}</h4>
       </div>
-    )}
-  else{
-    return <h1>Supp</h1>
-  }
-  
-  
+
+      {forumCards}
+    </div>
+  )
+
 };
 
 export default Profile;
+
+
+
+
+
+
