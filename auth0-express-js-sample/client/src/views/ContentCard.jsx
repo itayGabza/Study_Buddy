@@ -3,21 +3,38 @@ import './ContentCard.scss'
 import { Avatar, Card, CardContent, CardMedia } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Daniel from '../data/img/team/Daniel.jpeg'
-import Itay from '../data/img/team/itay.jpg'
+import Itay from '../data/img/team/Itay.jpg'
+import Yuval from '../data/img/team/Yuval.jpg'
+import Ido from '../data/img/team/Ido.jpg'
 const team_data = [{
+
     name: 'Daniel',
     pic: Daniel,
     url: '',
     role: 'Developer'
 
-}, {
+},
+ {
     name: 'Itay',
     pic: Itay,
     url: '',
     role: 'Developer'
 
-}
+},
+ {
+    name: 'Yuval',
+    pic: Yuval,
+    url: '',
+    role: 'Developer'
 
+}, 
+{
+    name: 'Ido',
+    pic: Ido,
+    url: '',
+    role: 'Developer'
+
+}
 ]
 const ContentCard = (props) => {
     console.log(props)

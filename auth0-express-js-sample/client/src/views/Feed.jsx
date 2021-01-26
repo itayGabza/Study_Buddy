@@ -34,10 +34,11 @@ const Feed = () => {
   const [error, setError] = useState("");
 
   const HandleStudyRequests = (data) => {
-    console.log("data", data);
-    const studyRequestsToRender = data.map((formCard) => (
+    console.log("data!!!!!!!!!!!", data);
+    const studyRequestsToRender = data.map(formCard =>
+
       <ForumCard {...formCard} />
-    ));
+    );
     setForumCards(studyRequestsToRender);
   };
 
@@ -103,9 +104,9 @@ const Feed = () => {
             <h4>  תוצאות החיפוש: {forumCards.length}</h4>
           </div>
 
-          {forumCards}
-        </div>
-      )}
+            {forumCards}
+          </div>
+        )}
     </div> /*:
     
     <text className="feedText">Login to see the feed </text>*/

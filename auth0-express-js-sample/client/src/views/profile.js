@@ -1,35 +1,57 @@
 // src/views/profile.js
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+import ForumCard from "../components/ForumCard";
 
 const Profile = () => {
   const { user } = useAuth0();
   const { name, picture, email } = user;
 
-  return (
-    <div>
-      <div className="row align-items-center profile-header">
-        <div className="col-md-2 mb-3">
-          <img
-            src={picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
-        </div>
-        <div className="col-md text-center text-md-left">
-          <h2>{name}</h2>
-          <p className="lead text-muted">{email}</p>
-        </div>
+  const [requests, setRequests] = useState([]);
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState("");
+  const backend_url = process.env.REACT_APP_BACKEND_URL;
+
+  useEffect((email) => {
+    axios.get(`${backend_url}/requests/A@a`)
+      .then((res) => {
+        console.log(res);
+        console.log("Supppppppp");
+        setRequests(res.data);
+        setLoad(true);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoad(true);
+      });
+  }, []);
+
+  if(load){
+    return(
+      <div>
+        {
+          error ? <li>{error.message}</li>
+          :
+          requests.forEach((request) => 
+            <ForumCard 
+           studyMethod={request.studyMethod}
+           studyGender={request.gender}
+           studyLevel={request.studyLevel}
+           studyTime={request.studyTime}
+           groupSize={request.groupSize}
+           studyMethod={request.studyMethod}
+            />
+          )}
       </div>
-      <div className="row">
-        <pre className="col-12 text-light bg-dark p-4">
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div>
-    </div>
-  );
+    )}
+  else{
+    return <h1>Supp</h1>
+  }
+  
+  
 };
 
 export default Profile;

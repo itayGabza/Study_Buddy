@@ -1,0 +1,38 @@
+
+.fieldsHeads {
+    text-align: center;
+}
+
+.dropDowns {
+    float: right;
+}
+
+.placeHolder {
+    text-align: right;
+}
+
+.entireForm {
+    max-width: 1000px;
+  margin: auto;
+}
+
+.rows {
+    float: right;
+}
+
+.fieldsHeadsSeprater {
+    text-align: center;
+    font-weight: bold;
+}
+
+.checkboxes {
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fieldsHeadsDots::before {
+    content: "*";
+    color: red;
+  }

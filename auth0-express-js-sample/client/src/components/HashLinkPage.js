@@ -6,10 +6,9 @@ import Feed from "../views/Feed";
 import Post from "../views/Post";
 import Blog from "../components/Blog";
 import SignUp from "../components/SignUp";
-import AboutUs from "../components/AboutUs";
 
 import HomeImage from "../data/img/home.jpg";
-import HomeImage2 from "../data/img/students_studying.jpg";
+import { Divider } from "@material-ui/core";
 
 const propTypes = {
   location: PropTypes.shape({
@@ -17,7 +16,7 @@ const propTypes = {
   }).isRequired,
 };
 
-function HomePage() {
+function HashLinkPage() {
   const sectionStyle = {
     padding: "2.5vw 3.5vw 12vh 3.5vw",
     boxSizing: "border-box",
@@ -31,8 +30,7 @@ function HomePage() {
     <div>
       <div id="section-one">
         {/* <section style={objectAssign({},)} id="section-one"> */}
-        <img src={HomeImage2} className="responsie_img" alt=""></img>
-        <AboutUs></AboutUs>
+        <img src={HomeImage} className="responsie_img" alt=""></img>
       </div>
       {/* </section> */}
       <section id="post">
@@ -46,10 +44,10 @@ function HomePage() {
         </div>
       </section>
       <section>
-        {/* <SignUp /> */}
+        <SignUp />
       </section>
-      <section id="section-two">
-        <ContentCard></ContentCard>
+      <section id="section-two" style={{ textAlign: "center" }}>
+        <ContentCard ></ContentCard>
       </section>
       <section
         style={objectAssign({ backgroundColor: "#C0C0C0" }, sectionStyle)}
@@ -62,6 +60,6 @@ function HomePage() {
   );
 }
 
-HomePage.propTypes = propTypes;
+HashLinkPage.propTypes = propTypes;
 
-export default HomePage;
+export default HashLinkPage;
