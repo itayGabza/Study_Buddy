@@ -14,6 +14,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/ForumCard.css";
 import "../components/jumbo.css";
+
 const backend_url = process.env.REACT_APP_SERVER_URL;
 
 const formCardsData = [];
@@ -99,7 +100,7 @@ const Feed = () => {
       ) : (
         <div>
           <div className="h4Style">
-            <h4> תוצאות החיפוש: {forumCards.length}</h4>
+            <h4>  תוצאות החיפוש: {forumCards.length}</h4>
           </div>
 
           {forumCards}
