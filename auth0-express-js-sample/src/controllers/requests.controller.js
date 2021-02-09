@@ -61,7 +61,6 @@ exports.create = (req, res) => {
   const { course, studyMethod, studyingFor, groupSize, studyLevel, studyTime, reqGender } = validateCreateData(req.body);
   //pulling gender from the students data by its email
   var myGender = "-1";
-
   const findByPk = Students.findByPk(studentEmail)
     .then((data) => {
       myGender = data.gender;
@@ -75,12 +74,14 @@ exports.create = (req, res) => {
     });
 
   findByPk.then(myGender => {
+    console.log("check params:", studentEmail, headLine, reqDescription, course, studyMethod, studyingFor, groupSize, studyLevel, studyTime, reqGender, myGender);
+
     const request = {
       course,
       studyMethod,
       studyingFor,
       groupSize,
-      mygender,
+      myGender,
       reqGender,
       studyLevel,
       studyTime,
@@ -89,6 +90,7 @@ exports.create = (req, res) => {
       studentEmail
     };
     // Save Students in the database
+    console.log("request is ", request);
     Requests.create(request)
       .then(data => {
         res.send(data);
