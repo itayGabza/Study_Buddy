@@ -6,6 +6,7 @@ const audience = process.env.AUTH0_AUDIENCE;
 const issuerUrl = process.env.AUTH0_ISSUER_URL;
 const serverPort = process.env.SERVER_PORT;
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL;
+//test
 
 if (!audience) {
   throw new Error(
