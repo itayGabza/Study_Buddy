@@ -5,15 +5,15 @@ import colourStyles from "./FiltesStyle.js";
 // import { filter, findWhere,} from "underscore";
 import "bootstrap/dist/css/bootstrap.css";
 const options = [
-  { value: "homeWork", label: "שיעורי בית", column: "1", color: 'red', query: 'studyingFor' },
-  { value: "test", label: "למידה למבחן", column: "1", color: 'red', query: 'studyingFor' },
-  { value: "other", label: "אחר", column: "1", color: 'red', query: 'studyingFor' },
-  { value: "male", label: "גבר", column: "2", color: 'orange', query: 'gender' },
-  { value: "female", label: "אישה", column: "2", color: 'orange', query: 'gender' },
-  { value: "mix", label: "תביאו לי הכל מהכל", column: "2", color: 'orange', query: 'gender' },
-  { value: "good", label: "טוב", column: "3", color: 'yellow', query: 'studyLevel' },
-  { value: "medium", label: "בינוני", column: "3", color: 'yellow', query: 'studyLevel' },
-  { value: "bad", label: "מתקשה", column: "3", color: 'yellow', query: 'studyLevel' },
+  { value: "homeWork", label: "שיעורי בית", column: "1", color: 'Tomato', query: 'studyingFor' },
+  { value: "test", label: "למידה למבחן", column: "1", color: 'Tomato', query: 'studyingFor' },
+  { value: "other", label: "אחר", column: "1", color: 'Tomato', query: 'studyingFor' },
+  { value: "male", label: "גבר", column: "2", color: 'DarkMagenta', query: 'gender' },
+  { value: "female", label: "אישה", column: "2", color: 'DarkMagenta', query: 'gender' },
+  { value: "mix", label: "תביאו לי הכל מהכל", column: "2", color: 'DarkMagenta', query: 'gender' },
+  { value: "good", label: "טוב", column: "3", color: 'OrangeRed', query: 'studyLevel' },
+  { value: "medium", label: "בינוני", column: "3", color: 'OrangeRed', query: 'studyLevel' },
+  { value: "bad", label: "מתקשה", column: "3", color: 'OrangeRed', query: 'studyLevel' },
   { value: "zoom", label: "Zoom", column: "4", color: 'green', query: 'studyMethod' },
   { value: "frontal", label: "פנים מול פנים", column: "4", color: 'green', query: 'studyMethod' },
   { value: "morning", label: "בבוקר", column: "5", color: 'lime', query: 'studyTime' },
@@ -49,6 +49,7 @@ class Filters extends Component {
       );
     };
   };
+  
   countColumns = (options) => {
     var columns = {},
       e;
@@ -128,7 +129,7 @@ class Filters extends Component {
       <div>
         <Select
           hideSelectedOptions={true}
-          isMulti
+          isMulti = {true}
           options={options}
           onChange={this.handleChange}
           value={values}

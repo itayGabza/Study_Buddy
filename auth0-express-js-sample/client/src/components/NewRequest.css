@@ -2,6 +2,24 @@
     font-family: sans-serif;
     text-align: center;
   }
+
+  .modal-header .close {
+    padding: 1rem 1rem;
+    margin: -1rem -1rem -1rem 0;
+}
+
+.modal-body {
+  position: relative;
+  padding: 0.5rem;
+}
+
+
+  .rowFilterPost {
+    display: flex;
+    flex-direction: row;
+    background: rgb(255, 255, 255);
+}
+
   body {
     direction: rtl;
   }
@@ -31,7 +49,7 @@
     color: grey;
     width: 80% !important;
     margin-left: 10%;
-    margin-top: 2%;
+    margin-top: 1%;
     text-align: right;
     border-radius: 20px;
   }
@@ -40,12 +58,12 @@
     color: grey;
     width: 80% !important;
     margin-left: 10%;
-    margin-top: 2%;
+    margin-top: 1%;
     text-align: right;
     border-radius: 20px;
   }
   .buttonD {
     direction: rtl;
-    margin: 2%;
+    margin: 1%;
   }
   

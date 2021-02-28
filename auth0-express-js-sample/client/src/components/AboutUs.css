@@ -11,6 +11,12 @@
     
 }
 
+.ButtonToCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .infoStyle{
     background-color: rgb(244, 235, 246); 
 }

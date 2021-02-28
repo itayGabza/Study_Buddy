@@ -34,17 +34,18 @@ class AboutUs extends React.Component {
                     ? 
                     <div class="text-center" className="infoStyle"> 
                         <AboutUsInfo></AboutUsInfo>
-                        <div className="infoButtonStyle">
+                        <div className="ButtonToCenter">
                             <Button variant="danger" class="align-self-center mx-auto" onClick={this.handleClickCloseClick} >
                                 קרא פחות  
                             </Button>
                         </div>
                     </div>
                     : 
-                    <div class="text-center"> 
+                    <div class="text-center" className="ButtonToCenter"> 
                         <div className="infoButtonStyle">
                             <Button class="align-self-center mx-auto" variant="success" onClick={this.handleClickOpenClick} >
-                                מזה Study Buddy?
+                                מה זה <br />
+                                Study Buddy?
                             </Button>
                         </div>
                     </div>
