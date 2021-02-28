@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import ForumCard from "../components/ForumCard";
+import Course from "../components/Course";
 
 const Profile = () => {
   const { user } = useAuth0();
@@ -15,6 +16,7 @@ const Profile = () => {
   const { isAuthenticated } = useAuth0();
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [forumCards, setForumCards] = useState([]);
+  const [courses, setCourses] = useState([]);
   const [studyRequest, setStudyRequest] = useState(formCardsData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -23,10 +25,13 @@ const Profile = () => {
   const HandleStudyRequests = (data) => {
     console.log("data!!!!!!!!!!!", data);
     const studyRequestsToRender = data.map(formCard =>
-
       <ForumCard {...formCard} />
     );
+    const coursesToRender = data.map(course =>
+      <Course {...course} />
+    );
     setForumCards(studyRequestsToRender);
+    setCourses(coursesToRender);
   };
 
   useEffect(() => {
@@ -39,6 +44,7 @@ const Profile = () => {
       .get(`${backend_url}`.concat("/requests").concat(StudyRequstQery))
       .then((res) => {
         HandleStudyRequests(res.data);
+        console.log(res.data);
 
         setLoading(false);
       })
@@ -54,7 +60,23 @@ const Profile = () => {
 
   const compsToRender = forumCards.map((formCard) => (
     <ForumCard {...formCard} />
+    
   ));
+
+  const coursesToRender = courses.map((course) => (
+    <Course {...course} />
+    
+  ));
+
+  const test1 = () => {
+    let arrayTest = [,];
+    forumCards.foreach(forumCard => {
+      const course = forumCard.course;
+      arrayTest.push(forumCard, course);
+    })
+    return arrayTest;
+  }
+  
 
 
   return (
@@ -63,17 +85,11 @@ const Profile = () => {
       <div className="h4Style">
         <h4> תוצאות החיפוש: {forumCards.length}</h4>
       </div>
-
-      {forumCards}
+      {coursesToRender}
+      {compsToRender}
     </div>
   )
 
 };
 
 export default Profile;
-
-
-
-
-
-

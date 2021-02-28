@@ -5,7 +5,7 @@ import ContentCard from "../views/ContentCard";
 import Feed from "../views/Feed";
 import Post from "../views/Post";
 import Blog from "../components/Blog";
-import SignUp from "../components/SignUp";
+/* import SignUp from "../components/SignUp"; */
 
 import HomeImage from "../data/img/home.jpg";
 import { Divider } from "@material-ui/core";
@@ -44,7 +44,7 @@ function HashLinkPage() {
         </div>
       </section>
       <section>
-        <SignUp />
+       {/*  <SignUp /> */}
       </section>
       <section id="section-two" style={{ textAlign: "center" }}>
         <ContentCard ></ContentCard>
