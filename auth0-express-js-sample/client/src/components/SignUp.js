@@ -85,7 +85,7 @@ const SignUp = () => {
                 </Col>
                 <Col>
                     <span className="dropDowns">
-                        <h3 className="fieldsHeads">מין</h3>
+                        <h3 className="fieldsHeads">מגדר</h3>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control 
                             type="text" 
