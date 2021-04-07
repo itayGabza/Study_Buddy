@@ -32,15 +32,32 @@ const AutoComplete = ({ data, onSelect }) => {
         });
     };
 
+    const check_hebrew = (str) => {
+        return (/[\u0590-\u05FF]/).test(str);
+    }
+    
+
     const suggestions = useMemo(() => {
         if (!search) return data;
 
         setCursor(-1);
         scrollIntoView(0);
 
-        return data.filter(item =>
-            item.name.toLowerCase().includes(search.toLowerCase())
+        return data.filter((item) =>
+            item.courseName.includes(search) |
+            item.courseNumber.includes(search)
+        //     {
+        //     if (check_hebrew(item) == true ) {
+        //         item.courseName.includes(search) |
+        //         item.courseNumber.includes(search)
+        //     }
+        //     else {
+        //         item.name.toLowerCase().includes(search.toLowerCase()) |
+        //         item.capital.toLowerCase().includes(search.toLowerCase())
+        //     }
+        // }
         );
+        
     }, [data, search]);
 
     useEffect(() => {
@@ -81,6 +98,7 @@ const AutoComplete = ({ data, onSelect }) => {
     return (
         <div style={{ height: "100%" }} ref={searchContainer}>
             <input
+                placeholder = "הקלד שם/מספר קורס" 
                 type="text"
                 name="search"
                 className="search-bar"

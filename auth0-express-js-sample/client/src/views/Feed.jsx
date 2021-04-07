@@ -84,7 +84,7 @@ const Feed = () => {
       /> */}
       <br />
 
-      {/* <SearchComp /> */}
+      <SearchComp />
 
       <h4> סינון תוצאות</h4>
       <div class="bigjumbo">
